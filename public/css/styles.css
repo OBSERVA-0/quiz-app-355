@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #58c0e7;
+  color: #000;
+  overflow: hidden;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(to top, #58c0e7 60%, #a6eaff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sky {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.cloud {
+  width: 80px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 10px 0 #fff, 20px 0 #fff;
+}
+
+.hearts img {
+  width: 32px;
+  margin: 0 5px;
+  image-rendering: pixelated;
+  background: transparent;
+  border: none;
+  display: inline-block;
+  mix-blend-mode: multiply; /* Helps remove unwanted white halo */
+}
+
+.title {
+  font-size: 3rem;
+  color: yellow;
+  text-shadow: 3px 3px #000;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #ccc;
+  border: 3px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #eee;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: repeating-linear-gradient(
+    to right,
+    #3b3b3b,
+    #3b3b3b 20px,
+    #4f4f4f 20px,
+    #4f4f4f 40px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bush {
+  height: 80px;
+  margin-top: -20px;
+  image-rendering: pixelated;
+  background: transparent;
+  border: none;
+  mix-blend-mode: multiply;
+}
+
+.mountains {
+  position: absolute;
+  right: 50px;
+  bottom: 100px;
+  width: 200px;
+  height: 120px;
+  background: linear-gradient(to top right, #444, #88aacc);
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  box-shadow: -60px 0 #667;
+}

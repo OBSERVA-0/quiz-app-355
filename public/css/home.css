@@ -21,23 +21,33 @@ body {
   justify-content: center;
 }
 
-.sky {
+.pixel-cloud {
+  width: 180px; 
   position: absolute;
-  top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 50px;
+  top: 40px;
+  image-rendering: pixelated;
+  z-index: 1;
 }
 
-.cloud {
-  width: 80px;
-  height: 50px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 10px 0 #fff, 20px 0 #fff;
+.pixel-cloud.left {
+  left: 30px;
+  width: 60px;
+}
+.pixel-cloud.center {
+  left: 45%;
+  width: 90px;
+}
+.pixel-cloud.right {
+  right: 30px;
+  width: 70px;
+}
+.pixel-cloud.far-right {
+  right: 100px;
+  top: 80px;
+  width: 100px;
 }
 
+/* Hearts */
 .hearts img {
   width: 32px;
   margin: 0 5px;
@@ -45,7 +55,7 @@ body {
   background: transparent;
   border: none;
   display: inline-block;
-  mix-blend-mode: multiply; /* Helps remove unwanted white halo */
+  z-index: 2;
 }
 
 .title {
@@ -53,6 +63,7 @@ body {
   color: yellow;
   text-shadow: 3px 3px #000;
   margin-bottom: 20px;
+  z-index: 2;
 }
 
 .start-button {
@@ -63,12 +74,34 @@ body {
   border: 3px solid #000;
   border-radius: 10px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .start-button:hover {
   background-color: #eee;
 }
 
+/* Mountain */
+.green-mountain {
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  width: 400px; /* made much bigger */
+  image-rendering: pixelated;
+  z-index: 1;
+}
+
+/* Mario next to mountain */
+.mario {
+  position: absolute;
+  bottom: 85px; 
+  right: 320px;
+  width: 80px;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+/* Ground and bush */
 .ground {
   position: absolute;
   bottom: 0;
@@ -82,26 +115,17 @@ body {
     #4f4f4f 40px
   );
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  z-index: 3;
 }
 
 .bush {
-  height: 80px;
-  margin-top: -20px;
+  height: 90px;
+  bottom: 85px;
   image-rendering: pixelated;
   background: transparent;
   border: none;
-  mix-blend-mode: multiply;
-}
-
-.mountains {
-  position: absolute;
-  right: 50px;
-  bottom: 100px;
-  width: 200px;
-  height: 120px;
-  background: linear-gradient(to top right, #444, #88aacc);
-  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-  box-shadow: -60px 0 #667;
+  z-index: 999; /* Ensures it's on top of everything */
+  position: relative;
 }

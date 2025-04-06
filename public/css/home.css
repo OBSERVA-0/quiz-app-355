@@ -22,30 +22,29 @@ body {
 }
 
 .pixel-cloud {
-  width: 180px; 
-  position: absolute;
-  top: 40px;
+  width: 240px; 
+  height: 140px;
+  background: url('/images/pixel-cloud.png') no-repeat center center;
+  background-size: contain;
   image-rendering: pixelated;
+  position: absolute;
   z-index: 1;
+  opacity: 0.9;
+  animation: floatCloud linear infinite;
 }
 
-.pixel-cloud.left {
-  left: 30px;
-  width: 60px;
+/* Cloud variations: top and speed */
+.cloud1 { top: 60px; left: -200px; animation-duration: 40s; }
+.cloud2 { top: 100px; left: -400px; animation-duration: 50s; }
+.cloud3 { top: 160px; left: -600px; animation-duration: 60s; }
+.cloud4 { top: 80px; left: -800px; animation-duration: 55s; }
+.cloud5 { top: 200px; left: -1000px; animation-duration: 65s; }
+
+@keyframes floatCloud {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(140vw); }
 }
-.pixel-cloud.center {
-  left: 45%;
-  width: 90px;
-}
-.pixel-cloud.right {
-  right: 30px;
-  width: 70px;
-}
-.pixel-cloud.far-right {
-  right: 100px;
-  top: 80px;
-  width: 100px;
-}
+
 
 /* Hearts */
 .hearts img {

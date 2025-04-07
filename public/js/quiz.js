@@ -197,6 +197,7 @@ function startTimer() {
     if (countdownTime <= 0) {
       clearInterval(timerInterval);  // Stop the timer once it reaches 0
       countdownTime = 0;  // Ensure the timer does not go negative
+      window.location.href = 'result.html';
     }
     updateTimerDisplay(countdownTime);
   }, 1000);

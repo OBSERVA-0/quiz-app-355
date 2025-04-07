@@ -1,7 +1,7 @@
 // Global variables
 let questions = [];
 let currentQuestionIndex = 0;
-let score = document.getElementById('scoreValue');
+let score = 0;
 let selectedQuestions = [];
 
 // DOM elements
@@ -142,7 +142,7 @@ function checkAnswer(event) {
 // End the quiz and redirect to results page
 function endQuiz() {
   // Save score to localStorage for the results page
-  localStorage.setItem('quizScore', score);
+  localStorage.setItem('score', score);
   localStorage.setItem('totalQuestions', selectedQuestions.length);
   
   // Redirect to results page

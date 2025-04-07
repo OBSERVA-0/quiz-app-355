@@ -148,3 +148,44 @@ function endQuiz() {
   // Redirect to results page
   window.location.href = 'result.html';
 }
+
+let timer;
+let seconds = 0;
+let minutes = 0;
+
+// Elements
+const timerDisplay = document.getElementById("timer-display");
+
+// Retrieve the timer value from localStorage
+window.onload = function() {
+  const timerData = JSON.parse(localStorage.getItem('timerTime'));
+
+  if (timerData) {
+    // Set the timer to the values stored in localStorage
+    minutes = timerData.minutes;
+    seconds = timerData.seconds;
+  }
+
+  // Update the timer display
+  timerDisplay.textContent = formatTime(minutes, seconds);
+
+  // Start the timer
+  timer = setInterval(function() {
+    seconds++;
+    if (seconds >= 60) {
+      seconds = 0;
+      minutes++;
+    }
+    // Update the display
+    timerDisplay.textContent = formatTime(minutes, seconds);
+
+    // Store the updated time in localStorage
+    localStorage.setItem('timerTime', JSON.stringify({ minutes, seconds }));
+  }, 1000);
+};
+
+// Format time as MM:SS
+function formatTime(minutes, seconds) {
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+

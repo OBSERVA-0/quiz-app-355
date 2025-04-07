@@ -1,7 +1,7 @@
 // Global variables
 let questions = [];
 let currentQuestionIndex = 0;
-let score = 0;
+let score = document.getElementById('scoreValue');
 let selectedQuestions = [];
 
 // DOM elements
@@ -91,7 +91,7 @@ function addNavigationButtons() {
   const navDiv = document.createElement('div');
   navDiv.className = 'navigation';
   
-  const nextButton = document.createElement('button');
+  const nextButton = document.getElementById('next-btn');
   nextButton.textContent = 'Next Question';
   nextButton.className = 'nav-button next-button';
   nextButton.style.display = 'none';

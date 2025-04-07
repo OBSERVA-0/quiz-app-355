@@ -182,15 +182,10 @@ function endQuiz() {
   window.location.href = 'result.html';
 }
 
-<<<<<<< Updated upstream
-let countdownTime;
-let timerInterval;
-=======
 
 let timer;
 let seconds = 0;
 let minutes = 0;
->>>>>>> Stashed changes
 
 // Retrieve the saved countdown time from localStorage
 const savedTime = localStorage.getItem('countdownTime');

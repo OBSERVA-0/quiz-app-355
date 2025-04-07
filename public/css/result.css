@@ -1,51 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    margin: 0;
-    padding: 0;
-    background: skyblue;
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    color: #000;
+  margin: 0;
+  padding: 0;
+  background: skyblue;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color: #000;
+  overflow: hidden;
+}
+
+.game-container {
+  background: url() no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.thank-you {
+  font-size: 48px;
+  color: gold;
+  text-shadow: 3px 3px 0 #000;
+  margin-bottom: 20px;
+  z-index: 10;
+}
+
+.stars {
+  font-size: 24px;
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+.btn {
+  font-size: 16px;
+  background: #ccc;
+  border: 3px solid #000;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #666;
+  z-index: 10;
+  transition: transform 0.1s ease;
+}
+
+.btn:hover {
+  background: #eee;
+  transform: translate(2px, 2px);
+}
+
+.score {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #222;
+  z-index: 10;
+}
+
+/* Cloud background */
+.cloud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cloud {
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 200px;
+  background: url('/images/pixel-cloud.png') no-repeat center center;
+  background-size: contain;
+  image-rendering: pixelated;
+  animation: floatCloud linear infinite;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.cloud1 { top: 60px; left: -150px; animation-duration: 40s; }
+.cloud2 { top: 120px; left: -300px; animation-duration: 50s; }
+.cloud3 { top: 180px; left: -600px; animation-duration: 60s; }
+.cloud4 { top: 80px; left: -450px; animation-duration: 45s; }
+.cloud5 { top: 200px; left: -700px; animation-duration: 55s; }
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(0);
   }
-  
-  .game-container {
-    background: url('background-image.png') no-repeat center;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  100% {
+    transform: translateX(120vw);
   }
-  
-  .thank-you {
-    font-size: 48px;
-    color: gold;
-    text-shadow: 3px 3px 0 #000;
-    margin-bottom: 20px;
-  }
-  
-  .stars {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .btn {
-    font-size: 16px;
-    background: #ccc;
-    border: 3px solid #000;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    box-shadow: 3px 3px 0 #666;
-  }
-  
-  .btn:hover {
-    background: #eee;
-  }
-  
-  .score {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #222;
-  }
-  
+}
+
+
+
+
+

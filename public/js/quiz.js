@@ -46,31 +46,31 @@ function getRandomQuestions(questions, count) {
   return shuffled.slice(0, count);
 }
 
-// Display question and options
 function displayQuestion(index) {
   if (index >= selectedQuestions.length) {
     endQuiz();
     return;
   }
-  
+
   const question = selectedQuestions[index];
   questionElement.textContent = question.question;
-  
+
   // Update option buttons
   optionButtons[0].textContent = `A. ${question.A}`;
   optionButtons[1].textContent = `B. ${question.B}`;
   optionButtons[2].textContent = `C. ${question.C}`;
   optionButtons[3].textContent = `D. ${question.D}`;
-  
-  // Reset button styles
+
+  // Reset button styles and enable them
   optionButtons.forEach(button => {
-    button.classList.remove('correct', 'incorrect');
+    button.classList.remove('correct', 'incorrect', 'selected'); // Remove all old styles
     button.disabled = false;
   });
-  
+
   // Update question counter
   updateQuestionCounter(index);
 }
+
 
 // Create and update question counter
 function updateQuestionCounter(index) {
@@ -147,11 +147,6 @@ function checkAnswer(event) {
 
   const selectedOption = event.target.textContent[0]; // A, B, C, or D
   const correctAnswer = selectedQuestions[currentQuestionIndex].answer;
-
-  // Disable all buttons to prevent multiple answers
-  // optionButtons.forEach(button => {
-  //   button.disabled = true;
-  // });
 
   // Show correct/incorrect feedback
   if (selectedOption === correctAnswer) {

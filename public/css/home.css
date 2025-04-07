@@ -98,27 +98,27 @@ body {
   z-index: 1;
 }
 
-.mario{
-  bottom: 10%;
-  position: absolute;
-  animation: linear infinite;
-  animation-name: run;
-  animation-duration: 20s;
-  left: 50px;
-  width: 80px;
-  z-index: 2;
-}
-  @keyframes run {
-    0% {
-      left: 0;
-    }
-    50% { 
-      left: calc(100% - 100px); 
-     }
-    100% {
-      left: 0;     
-    }
+ .mario{
+    bottom: 10%;
+    position: absolute;
+    animation: linear infinite;
+    animation-name: run;
+    animation-duration: 20s;
+    left: 50px;
+    width: 80px;
+    z-index: 2;
   }
+    @keyframes run {
+      0% {
+        left: 0;
+      }
+      50% { 
+        left: calc(100% - 100px); 
+       }
+      100% {
+        left: 0;     
+      }
+    }
 
 .bowser {
   bottom: 100px; 

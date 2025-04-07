@@ -30,10 +30,21 @@ body {
   z-index: 10;
 }
 
+.stars img {
+  width: 32px; /* or 40px if you want bigger */
+  height: auto;
+  image-rendering: pixelated;
+  margin: 0 5px;
+}
+
 .stars {
-  font-size: 24px;
-  margin-bottom: 10px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
+  display: flex;
+  justify-content: center;
 }
 
 .btn {

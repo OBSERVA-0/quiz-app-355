@@ -30,6 +30,24 @@ body {
     box-shadow: 6px 6px 0 #000;
   }
   
+  .hearts {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hearts img {
+    width: 32px; /* or 40px if you want bigger */
+    height: auto;
+    image-rendering: pixelated;
+    margin: 0 5px;
+  }
+
+  
   .question {
     font-size: 14px;
     color: black;

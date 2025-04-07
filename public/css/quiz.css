@@ -134,5 +134,29 @@ body {
 }
 
 .option.selected {
-  border: 10px solid #c7bf25;
+  border: 8px solid #c7bf25;
+}
+
+.feedback {
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.feedback.correct-feedback {
+  color: green;
+}
+
+.feedback.incorrect-feedback {
+  color: red;
+}
+
+.option.correct {
+  background-color: lightgreen !important; /* Use !important to override other styles */
+  color: black;
+}
+
+.option.incorrect {
+  background-color: lightcoral !important; /* Use !important to override other styles */
+  color: white;
 }

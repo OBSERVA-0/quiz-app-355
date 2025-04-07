@@ -132,3 +132,7 @@ body {
   transform: translateX(-50%); /* Adjust for true centering */
   z-index: 100; /* Make sure it's on top */
 }
+
+.option.selected {
+  border: 10px solid #c7bf25;
+}

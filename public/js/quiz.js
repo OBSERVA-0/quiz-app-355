@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Fetch questions from JSON file
 async function fetchQuestions() {
   try {
-    const response = await fetch('../quiz-questions/questions.json');
+    const response = await fetch('quiz-questions/questions.json');
         const allQuestions = await response.json();
     
     // Randomly select 10 questions

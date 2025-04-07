@@ -19,7 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
 .thank-you {
@@ -46,11 +46,13 @@ body {
   box-shadow: 3px 3px 0 #666;
   z-index: 10;
   transition: transform 0.1s ease;
+  z-index: 10;
 }
 
 .btn:hover {
   background: #eee;
   transform: translate(2px, 2px);
+  z-index: 10;
 }
 
 .score {
@@ -68,7 +70,7 @@ body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 .cloud {
@@ -81,7 +83,7 @@ body {
   image-rendering: pixelated;
   animation: floatCloud linear infinite;
   opacity: 0.8;
-  z-index: 0;
+  z-index: -1;
 }
 
 .cloud1 { top: 60px; left: -150px; animation-duration: 40s; }

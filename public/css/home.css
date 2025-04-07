@@ -23,9 +23,9 @@ body {
 
 /* Sky & Clouds */
 .pixel-cloud {
-  width: 240px; 
+  width: 240px;
   height: 140px;
-  background: url('/public/images/pixel-cloud.png') no-repeat center center;
+  background: url('/images/pixel-cloud.png') no-repeat center center;
   background-size: contain;
   image-rendering: pixelated;
   position: absolute;

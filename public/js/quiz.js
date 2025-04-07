@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchQuestions() {
   try {
     const response = await fetch('../quiz-questions/questions.json');
-    
-    const allQuestions = await response.json();
+        const allQuestions = await response.json();
     
     // Randomly select 10 questions
     selectedQuestions = getRandomQuestions(allQuestions, 10);
@@ -91,7 +90,7 @@ function addNavigationButtons() {
   const navDiv = document.createElement('div');
   navDiv.className = 'navigation';
   
-  const nextButton = document.getElementById('next-btn');
+  const nextButton = document.createElement('button');
   nextButton.textContent = 'Next Question';
   nextButton.className = 'nav-button next-button';
   nextButton.style.display = 'none';

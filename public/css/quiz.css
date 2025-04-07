@@ -112,10 +112,12 @@ body {
     border-radius: 40px;
     font-size: 15px;
     font-family:'Press Start 2P';
-    color: yellow;
-    text-shadow: 3px 3px #000;
+    color: black;
     margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 8px;
     z-index: 2;
+    
   }
 
   /* Timer Styles */

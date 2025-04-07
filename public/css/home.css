@@ -25,7 +25,7 @@ body {
 .pixel-cloud {
   width: 240px; 
   height: 140px;
-  background: url('/images/pixel-cloud.png') no-repeat center center;
+  background: url('/public/images/pixel-cloud.png') no-repeat center center;
   background-size: contain;
   image-rendering: pixelated;
   position: absolute;
@@ -181,7 +181,7 @@ position: absolute;
   bottom: 0;
   width: 100%;
   height: 100px;
-  background: url('/images/dirt.jpg') repeat-x;
+  background: url('/public/images/dirt.jpg') repeat-x;
   background-size: contain;
   image-rendering: pixelated;
   display: flex;

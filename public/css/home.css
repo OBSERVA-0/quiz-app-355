@@ -13,14 +13,15 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  text-align: center;
   background: linear-gradient(to top, #58c0e7 60%, #a6eaff);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
+/* Sky & Clouds */
 .pixel-cloud {
   width: 240px; 
   height: 140px;
@@ -33,7 +34,6 @@ body {
   animation: floatCloud linear infinite;
 }
 
-/* Cloud variations: top and speed */
 .cloud1 { top: 60px; left: -200px; animation-duration: 40s; }
 .cloud2 { top: 100px; left: -400px; animation-duration: 50s; }
 .cloud3 { top: 160px; left: -600px; animation-duration: 60s; }
@@ -45,15 +45,11 @@ body {
   100% { transform: translateX(140vw); }
 }
 
-
-/* Hearts */
+/* UI: Hearts, Title, Button */
 .hearts img {
   width: 32px;
   margin: 0 5px;
   image-rendering: pixelated;
-  background: transparent;
-  border: none;
-  display: inline-block;
   z-index: 2;
 }
 
@@ -80,27 +76,64 @@ body {
   background-color: #eee;
 }
 
-/* Mountain */
-.green-mountain {
+/* Scenery */
+.green-mountain,
+.mario,
+.castle,
+.pole,
+.pipe,
+.princess {
   position: absolute;
-  bottom: 100px;
-  right: 50px;
-  width: 400px; /* made much bigger */
   image-rendering: pixelated;
+  background: transparent;
+  border: none;
+}
+
+/* Individual element positioning */
+.green-mountain {
+  bottom: 100px;
+  left: 50px;
+  width: 400px;
   z-index: 1;
 }
 
-/* Mario next to mountain */
 .mario {
-  position: absolute;
   bottom: 85px; 
-  right: 320px;
+  left: 50px;
   width: 80px;
-  image-rendering: pixelated;
   z-index: 2;
 }
 
-/* Ground and bush */
+.pole {
+  bottom: 25px;
+  left: 75%;
+  height: 300px;
+  z-index: 1;
+}
+
+.castle {
+  bottom: 100px;
+  left: 85%;
+  height: 300px;
+  z-index: 4;
+}
+
+.princess {
+  bottom: 100px;
+  left: 90%;
+  height: 100px;
+  transform: scaleX(-1); /* flip horizontally */
+  z-index: 1000;
+}
+
+.pipe {
+  bottom: 77px;
+  left: 30%;
+  height: 120px;
+  z-index: 999;
+}
+
+/* Ground */
 .ground {
   position: absolute;
   bottom: 0;
@@ -120,11 +153,9 @@ body {
 }
 
 .bush {
-  height: 90px;
-  bottom: 85px;
+  height: 120px;
+  bottom: 80px;
   image-rendering: pixelated;
-  background: transparent;
-  border: none;
-  z-index: 999; /* Ensures it's on top of everything */
+  z-index: 999;
   position: relative;
 }

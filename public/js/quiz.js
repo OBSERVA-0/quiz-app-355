@@ -104,40 +104,6 @@ function addNavigationButtons() {
   quizContainer.appendChild(navDiv);
 }
 
-// Check answer and update score
-// function checkAnswer(event) {
-//   const selectedOption = event.target.textContent[0]; // Get the letter (A, B, C, or D)
-//   const correctAnswer = selectedQuestions[currentQuestionIndex].answer;
-  
-//   // Disable all buttons to prevent multiple answers
-//   optionButtons.forEach(button => {
-//     button.disabled = true;
-//   });
-  
-//   // Show correct/incorrect feedback
-//   if (selectedOption === correctAnswer) {
-//     event.target.classList.add('correct');
-//     score++;
-//   } else {
-//     event.target.classList.add('incorrect');
-//     // Highlight the correct answer
-//     optionButtons.forEach(button => {
-//       if (button.textContent[0] === correctAnswer) {
-//         button.classList.add('correct');
-//       }
-//     });
-//   }
-  
-//   // Show the next button
-//   const nextButton = document.querySelector('.next-button');
-  
-//   // If this is the last question, change the text
-//   if (currentQuestionIndex === selectedQuestions.length - 1) {
-//     nextButton.textContent = 'See Results';
-//   }
-  
-//   nextButton.style.display = 'block';
-// }
 function checkAnswer(event) {
   // Remove previous 'selected' class from all buttons
   optionButtons.forEach(button => button.classList.remove('selected'));

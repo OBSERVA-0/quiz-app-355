@@ -194,3 +194,34 @@ body {
   text-shadow: 3px 3px #000;
   z-index: 10;
 }
+
+.start-timer-btn {
+  background: #ccc; /* Light gray, matching the Start button */
+  color: black;
+  border: 3px solid #000; /* Black border */
+  border-radius: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 10px 30px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #666; /* Darker shadow for depth */
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  margin-top: 20px; /* Added margin to position the button below */
+}
+
+.start-timer-btn:hover {
+  background: #eee; /* Lighter gray on hover */
+  transform: translateY(-2px); /* Button lifts slightly */
+}
+
+.start-timer-btn:active {
+  background: #bbb; /* Slightly darker gray when clicked */
+  transform: translateY(2px); /* Button pressed effect */
+}
+
+.start-timer-btn:disabled {
+  background: #cccccc; /* Disabled state color */
+  cursor: not-allowed; /* Change cursor to show it's not clickable */
+  box-shadow: none;
+}

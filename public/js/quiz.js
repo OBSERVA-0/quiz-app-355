@@ -149,43 +149,43 @@ function endQuiz() {
   window.location.href = 'result.html';
 }
 
-let timer;
-let seconds = 0;
-let minutes = 0;
+let countdownTime;
+let timerInterval;
 
-// Elements
-const timerDisplay = document.getElementById("timer-display");
-
-// Retrieve the timer value from localStorage
-window.onload = function() {
-  const timerData = JSON.parse(localStorage.getItem('timerTime'));
-
-  if (timerData) {
-    // Set the timer to the values stored in localStorage
-    minutes = timerData.minutes;
-    seconds = timerData.seconds;
-  }
-
-  // Update the timer display
-  timerDisplay.textContent = formatTime(minutes, seconds);
-
-  // Start the timer
-  timer = setInterval(function() {
-    seconds++;
-    if (seconds >= 60) {
-      seconds = 0;
-      minutes++;
-    }
-    // Update the display
-    timerDisplay.textContent = formatTime(minutes, seconds);
-
-    // Store the updated time in localStorage
-    localStorage.setItem('timerTime', JSON.stringify({ minutes, seconds }));
-  }, 1000);
-};
-
-// Format time as MM:SS
-function formatTime(minutes, seconds) {
-  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+// Retrieve the saved countdown time from localStorage
+const savedTime = localStorage.getItem('countdownTime');
+if (savedTime) {
+  countdownTime = parseInt(savedTime);  // Get the time that was saved from the home screen
+} else {
+  countdownTime = 10 * 60 * 1000;  // Default to 10 minutes if no saved time exists
 }
 
+function startTimer() {
+  // Start the timer countdown
+  timerInterval = setInterval(() => {
+    countdownTime -= 1000;  // Decrease by 1 second (1000 milliseconds)
+    if (countdownTime <= 0) {
+      clearInterval(timerInterval);  // Stop the timer once it reaches 0
+      countdownTime = 0;  // Ensure the timer does not go negative
+    }
+    updateTimerDisplay(countdownTime);
+  }, 1000);
+}
+
+// Update timer display
+function updateTimerDisplay(time) {
+  const minutes = Math.floor(time / (1000 * 60));
+  const seconds = Math.floor((time % (1000 * 60)) / 1000);
+  const formattedTime = `${pad(minutes)}:${pad(seconds)}`;
+  document.getElementById('timer-display').innerText = formattedTime;
+}
+
+// Utility function to pad minutes/seconds
+function pad(num) {
+  return num < 10 ? '0' + num : num;
+}
+
+// Start the timer when the page is loaded
+window.onload = function() {
+  startTimer();
+};

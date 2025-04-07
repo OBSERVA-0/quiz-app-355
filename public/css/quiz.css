@@ -108,3 +108,12 @@ body {
     }
   }
   
+  .nav-button{
+    border-radius: 40px;
+    font-size: 15px;
+    font-family:'Press Start 2P';
+    color: yellow;
+    text-shadow: 3px 3px #000;
+    margin-bottom: 20px;
+    z-index: 2;
+  }

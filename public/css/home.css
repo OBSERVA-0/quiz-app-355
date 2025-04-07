@@ -98,36 +98,54 @@ body {
   z-index: 1;
 }
 
- .mario{
-    bottom: 10%;
-    position: absolute;
-    animation: linear infinite;
-    animation-name: run;
-    animation-duration: 20s;
-    left: 50px;
-    width: 80px;
-    z-index: 2;
+.mario{
+  bottom: 10%;
+  position: absolute;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 20s;
+  left: 50px;
+  width: 80px;
+  z-index: 2;
+}
+@keyframes run {
+  0% {
+    left: 0;
   }
-    @keyframes run {
-      0% {
-        left: 0;
-      }
-      50% { 
-        left: calc(100% - 100px); 
-       }
-      100% {
-        left: 0;     
-      }
-    }
-
-.bowser {
-  bottom: 100px; 
-  left: 75%;
-  width: 100px;
-  z-index: 3;
-  transform: scaleX(-1); /* flip horizontally */
+  48% {
+    transform: rotateY(0deg); 
+  }
+  50% { 
+    left: calc(100% - 100px);
+    transform: rotateY(180deg); 
+  }
+  98% {
+    transform: rotateY(180deg); 
+  }
+  100% {
+    left: 0;    
+     transform: rotateY(0deg);
+  }
 }
 
+.bowser {
+bottom: 100px; 
+left: 75%;
+width: 100px;
+z-index: 3;
+animation: MoveUpDown 2s linear infinite;
+position: absolute;
+
+}
+@keyframes MoveUpDown {
+0%, 100% {
+  transform: translateY(0);
+}
+50% {
+  transform: translateY(-100px);
+  
+}
+}
 .pole {
   bottom: 25px;
   left: 75%;

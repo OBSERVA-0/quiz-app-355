@@ -67,6 +67,34 @@ body {
   z-index: 10;
 }
 
+.thank-you {
+  font-size: 2rem;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+.stars img.earned {
+  filter: drop-shadow(0 0 5px gold);
+  transform: scale(1.1);
+  animation: pop 0.3s ease-in-out;
+}
+
+.stars img.dimmed {
+  opacity: 0.3;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  100% { transform: scale(1.1); }
+}
+
+
+
 .score {
   font-size: 20px;
   margin-bottom: 20px;

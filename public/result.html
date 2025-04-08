@@ -5,6 +5,7 @@
   <title>Thank You Screen</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/result.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     </div>
     
     <div class="thank-you">THANK YOU</div>
-    <div class="score">Score: <span id="scoreValue">0</span></div>
+    <div class="score">Your Score is: <span id="scoreValue">0</span></div>
     <a href="https://youtu.be/dQw4w9WgXcQ?si=92uGsnBL09CjJ9Ln" target ="blank"class="btn">END</a>
     <a href="index.html" class="btn">Play Again</a>
 
@@ -39,6 +40,23 @@
   const scoreValue = localStorage.getItem('quizScore') || 0;
   document.getElementById('scoreValue').textContent = scoreValue;
   localStorage.removeItem('timerTime');
+  confetti({
+  particleCount: 1000,
+  spread: 70,
+  origin: { y: 0.6 },
+});
+const total = localStorage.getItem('totalQuestions') || 10;
+const scored = parseInt(scoreValue);
+const starElements = document.querySelectorAll('.stars img');
+
+for (let i = 0; i < starElements.length; i++) {
+  if (i < Math.round((scored / total) * starElements.length)) {
+    starElements[i].classList.add('earned');
+  } else {
+    starElements[i].classList.add('dimmed');
+  }
+}
+
 </script>
 </body>
 </html>

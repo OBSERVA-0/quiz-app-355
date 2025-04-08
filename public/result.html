@@ -35,6 +35,7 @@
     </div>
   </div>
   <script src="./js/quiz.js"></script>
+
   <script>
   // Get the score from localStorage and display it
   const scoreValue = localStorage.getItem('quizScore') || 0;
@@ -45,17 +46,31 @@
   spread: 70,
   origin: { y: 0.6 },
 });
-const total = localStorage.getItem('totalQuestions') || 10;
-const scored = parseInt(scoreValue);
-const starElements = document.querySelectorAll('.stars img');
+  const total = localStorage.getItem('totalQuestions') || 10;
+  document.getElementById('scoreValue').textContent = scoreValue;
 
-for (let i = 0; i < starElements.length; i++) {
-  if (i < Math.round((scored / total) * starElements.length)) {
-    starElements[i].classList.add('earned');
-  } else {
-    starElements[i].classList.add('dimmed');
+  // Light up stars based on score
+  const starElements = document.querySelectorAll('.stars img');
+  for (let i = 0; i < starElements.length; i++) {
+    if (i < Math.round((scoreValue / total) * starElements.length)) {
+      starElements[i].classList.add('earned');
+    } else {
+      starElements[i].classList.add('dimmed');
+    }
   }
-}
+
+  // Show motivational message
+  const message = document.createElement('div');
+  message.className = 'score-message';
+  if (scoreValue == total) {
+    message.textContent = "🏆 Perfect! You're a quiz master!";
+  } else if (scoreValue >= total * 0.6) {
+    message.textContent = "🎉 Great job! You're almost there!";
+  } else {
+    message.textContent = "📚 Keep practicing, you got this!";
+  }
+  document.querySelector('.score').after(message);
+</script>
 
 </script>
 </body>

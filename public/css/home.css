@@ -34,11 +34,11 @@ body {
   animation: floatCloud linear infinite;
 }
 
-.cloud1 { top: 60px; left: -200px; animation-duration: 40s; }
-.cloud2 { top: 100px; left: -400px; animation-duration: 50s; }
-.cloud3 { top: 160px; left: -600px; animation-duration: 60s; }
-.cloud4 { top: 80px; left: -800px; animation-duration: 55s; }
-.cloud5 { top: 200px; left: -1000px; animation-duration: 65s; }
+.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
+.cloud2 { top: 100px; left: -400px; animation-duration: 35s; }
+.cloud3 { top: 160px; left: -600px; animation-duration: 40s; }
+.cloud4 { top: 80px; left: -800px; animation-duration: 45s; }
+.cloud5 { top: 200px; left: -1000px; animation-duration: 50s; }
 
 @keyframes floatCloud {
   0%   { transform: translateX(0); }

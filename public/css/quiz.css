@@ -41,7 +41,7 @@ body {
   }
   
   .hearts img {
-    width: 32px; /* or 40px if you want bigger */
+    width: 32px; 
     height: auto;
     image-rendering: pixelated;
     margin: 0 5px;
@@ -93,11 +93,11 @@ body {
     opacity: 0.8;
   }
   
-  .cloud1 { top: 60px; left: -150px; animation-duration: 40s; }
-  .cloud2 { top: 120px; left: -300px; animation-duration: 50s; }
-  .cloud3 { top: 180px; left: -600px; animation-duration: 60s; }
+  .cloud1 { top: 60px; left: -150px; animation-duration: 30s; }
+  .cloud2 { top: 120px; left: -300px; animation-duration: 35s; }
+  .cloud3 { top: 180px; left: -600px; animation-duration: 40s; }
   .cloud4 { top: 80px; left: -450px; animation-duration: 45s; }
-  .cloud5 { top: 200px; left: -700px; animation-duration: 55s; }
+  .cloud5 { top: 200px; left: -700px; animation-duration: 50s; }
   
   @keyframes floatCloud {
     0% {
@@ -126,11 +126,11 @@ body {
   font-size: 24px;
   color: yellow;
   text-shadow: 3px 3px #000;
-  position: absolute; /* Position it above the questions */
-  top: 10%; /* Adjust this value for the vertical position */
+  position: absolute; 
+  top: 10%; 
   left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Adjust for true centering */
-  z-index: 100; /* Make sure it's on top */
+  transform: translateX(-50%);
+  z-index: 100; 
 }
 
 .option.selected {
@@ -152,11 +152,11 @@ body {
 }
 
 .option.correct {
-  background-color: lightgreen !important; /* Use !important to override other styles */
+  background-color: lightgreen !important; 
   color: black;
 }
 
 .option.incorrect {
-  background-color: lightcoral !important; /* Use !important to override other styles */
+  background-color: lightcoral !important; 
   color: white;
 }

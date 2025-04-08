@@ -31,7 +31,7 @@ body {
 }
 
 .stars img {
-  width: 32px; /* or 40px if you want bigger */
+  width: 32px; 
   height: auto;
   image-rendering: pixelated;
   margin: 0 5px;

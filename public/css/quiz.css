@@ -47,6 +47,10 @@ body {
     margin: 0 5px;
   }
 
+  .hearts img.dimmed {
+    opacity: 0.3;
+  }
+
   
   .question {
     font-size: 14px;

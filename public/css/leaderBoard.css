@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Keyframe Animations */
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Adjust the jump height here */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(80vw); /* Move Yoshi to the right side */
+  }
+  100% {
+    transform: translateX(0); /* Return to starting position */
+  }
+}
+
+/* Body Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: #66ccff; /* Sky blue for Mario world */
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  text-align: center;
+}
+
+/* Background Clouds */
+.clouds {
+  background-image: url('images/clouds.png');
+  background-repeat: repeat-x;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 3;
+}
+
+/* Title Styling */
+h1.title {
+  font-size: 2rem;
+  color: #f5d700;
+  text-shadow: 4px 4px 8px #000;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+/* Leaderboard Table */
+.table-container {
+  background-color: #0099cc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 60%; /* Make it narrower */
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  padding: 8px;
+  border: 1px solid #f5d700;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.table-container th {
+  background-color: #f5d700;
+  color: #000;
+}
+
+.table-container td {
+  background-color: #666;
+}
+
+/* Buttons */
+.button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 8px 20px;
+  background-color: #ff5733;
+  border: 3px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 20px;
+  z-index: 2;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #c43e00;
+  transform: scale(1.1);
+  color: #000;
+}
+
+/* Characters (Mario, Luigi, Yoshi) */
+.characters {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  z-index: 2;
+}
+
+.mario, .luigi {
+  width: 70px;
+  height: auto;
+  margin: 0 15px;
+  animation: jump 1s ease-in-out infinite; /* Make Mario and Luigi jump */
+}
+
+.luigi {
+  animation-delay: 0.5s; /* Stagger Luigi's jump */
+}
+
+/* Yoshi running animation */
+.yoshi {
+  width: 80px; /* Adjust size of Yoshi */
+  height: auto;
+  animation: run 4s ease-in-out infinite; /* Yoshi runs from left to right */
+  position: absolute;
+  bottom: 30px; /* Keep Yoshi on the ground */
+  left: 0; /* Start at the left side of the screen */
+}

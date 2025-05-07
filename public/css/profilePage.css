@@ -1,0 +1,22 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Light blue-gray background */
+}
+/* Style for hidden file input */
+.hidden-file-input {
+    display: none;
+}
+/* Simple transition for hover effects */
+.hover-scale {
+    transition: transform 0.2s ease-in-out;
+}
+.hover-scale:hover {
+    transform: scale(1.03);
+}
+.profile-pic-hover button {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.profile-pic-container:hover .profile-pic-hover button {
+    opacity: 1;
+}

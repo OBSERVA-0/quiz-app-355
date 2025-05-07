@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="text-gray-800">
+
+    <nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">QuizApp</a>
+            <div>
+                <a href="#" class="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">Home</a>
+                <a href="#" class="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">Quizzes</a>
+                <a href="#" class="px-3 py-2 rounded-md bg-blue-700 font-semibold">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
+
+        <section class="profile-card bg-white shadow-2xl rounded-xl p-6 md:p-10 mb-10 transition-all duration-300 ease-in-out">
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="profile-picture-area mb-6 md:mb-0 md:mr-10 text-center relative group profile-pic-container">
+                    <img id="profileImage" src="https://placehold.co/160x160/3B82F6/FFFFFF?text=User" alt="User Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-indigo-500 object-cover shadow-lg">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full profile-pic-hover">
+                        <button id="changePicBtn" class="text-white text-sm py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-colors">
+                            <i class="fas fa-camera mr-1"></i> Change
+                        </button>
+                    </div>
+                    <input type="file" id="profilePicInput" class="hidden-file-input" accept="image/*">
+                </div>
+
+                <div class="profile-info-area text-center md:text-left flex-grow">
+                    <div class="username-container mb-3 flex items-center justify-center md:justify-start">
+                        <h1 id="usernameDisplay" class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 mr-3">CurrentUsername</h1>
+                        <input type="text" id="usernameInput" class="hidden text-3xl md:text-4xl font-bold border-b-2 border-indigo-500 focus:outline-none focus:border-blue-500 bg-transparent" value="CurrentUsername">
+                        <button id="editUsernameBtn" title="Edit Username" class="text-indigo-600 hover:text-indigo-800 transition-colors ml-2 p-2 rounded-full hover:bg-indigo-100">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button id="saveUsernameBtn" class="hidden bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-4 rounded-lg text-sm ml-2 transition-colors">
+                            <i class="fas fa-save mr-1"></i> Save
+                        </button>
+                        <button id="cancelEditBtn" class="hidden bg-gray-400 hover:bg-gray-500 text-white font-semibold py-1 px-3 rounded-lg text-sm ml-2 transition-colors">
+                            Cancel
+                        </button>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-4">Joined: May 7, 2025</p>
+
+                    <div class="stats grid grid-cols-1 sm:grid-cols-2 gap-4 text-center md:text-left">
+                        <div class="stat-item bg-gradient-to-br from-blue-50 to-indigo-100 p-4 rounded-lg shadow hover-scale">
+                            <p class="text-2xl font-bold text-indigo-600">15</p>
+                            <p class="text-sm text-gray-600">Quizzes Played</p>
+                        </div>
+                        <div class="stat-item bg-gradient-to-br from-green-50 to-teal-100 p-4 rounded-lg shadow hover-scale">
+                            <p class="text-2xl font-bold text-green-600">85%</p>
+                            <p class="text-sm text-gray-600">Average Score</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="past-games">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-indigo-300">
+                <i class="fas fa-history mr-2 text-indigo-500"></i>Game History
+            </h2>
+            <div id="pastGamesList" class="space-y-6">
+                <div class="game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">Quiz: General Knowledge Challenge</h3>
+                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: May 01, 2025</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">8 / 10</span></p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
+                            <span>8 Correct</span>
+                        </div>
+                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
+                            <span>2 Incorrect</span>
+                        </div>
+                    </div>
+                     <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+
+                <div class="game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">Quiz: Science Wonders</h3>
+                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: April 28, 2025</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-orange-500">5 / 10</span></p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
+                            <span>5 Correct</span>
+                        </div>
+                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
+                            <span>5 Incorrect</span>
+                        </div>
+                    </div>
+                    <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+
+                </div>
+            <p id="noGamesMessage" class="text-gray-500 text-center py-10 hidden">
+                <i class="fas fa-ghost text-3xl mb-2"></i><br>
+                No past games to display yet. <br> Go play some quizzes to see your history!
+            </p>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-10 text-sm text-gray-500">
+        © 2025 QuizApp. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // DOM Elements
+            const profileImage = document.getElementById('profileImage');
+            const changePicBtn = document.getElementById('changePicBtn');
+            const profilePicInput = document.getElementById('profilePicInput');
+
+            const usernameDisplay = document.getElementById('usernameDisplay');
+            const usernameInput = document.getElementById('usernameInput');
+            const editUsernameBtn = document.getElementById('editUsernameBtn');
+            const saveUsernameBtn = document.getElementById('saveUsernameBtn');
+            const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+            const pastGamesList = document.getElementById('pastGamesList');
+            const noGamesMessage = document.getElementById('noGamesMessage');
+
+            // --- Profile Picture Change ---
+            changePicBtn.addEventListener('click', () => {
+                profilePicInput.click(); // Trigger hidden file input
+            });
+
+            profilePicInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        profileImage.src = e.target.result;
+                        // Here, you would typically send the file to your server
+                        console.log("Profile picture changed (client-side). Send to server for saving.");
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // --- Username Edit ---
+            let originalUsername = usernameDisplay.textContent;
+            editUsernameBtn.addEventListener('click', () => {
+                usernameDisplay.classList.add('hidden');
+                editUsernameBtn.classList.add('hidden');
+                usernameInput.value = usernameDisplay.textContent; // Set current username to input
+                usernameInput.classList.remove('hidden');
+                saveUsernameBtn.classList.remove('hidden');
+                cancelEditBtn.classList.remove('hidden');
+                usernameInput.focus();
+            });
+
+            saveUsernameBtn.addEventListener('click', () => {
+                const newUsername = usernameInput.value.trim();
+                if (newUsername && newUsername !== usernameDisplay.textContent) {
+                    usernameDisplay.textContent = newUsername;
+                    originalUsername = newUsername; // Update original for next edit
+                    // Here, you would typically send the newUsername to your server
+                    console.log("Username updated to:", newUsername, "(client-side). Send to server.");
+                }
+                // Revert to display mode
+                usernameInput.classList.add('hidden');
+                saveUsernameBtn.classList.add('hidden');
+                cancelEditBtn.classList.add('hidden');
+                usernameDisplay.classList.remove('hidden');
+                editUsernameBtn.classList.remove('hidden');
+            });
+
+            cancelEditBtn.addEventListener('click', () => {
+                usernameInput.classList.add('hidden');
+                saveUsernameBtn.classList.add('hidden');
+                cancelEditBtn.classList.add('hidden');
+                
+                usernameDisplay.classList.remove('hidden');
+                editUsernameBtn.classList.remove('hidden');
+                usernameInput.value = originalUsername; // Reset to original
+            });
+
+
+            // --- Past Games (Example: Check if list is empty) ---
+            // In a real app, you'd fetch this data and populate the list.
+            // This is just to show/hide the "no games" message based on current static content.
+            if (pastGamesList.children.length === 0) {
+                noGamesMessage.classList.remove('hidden');
+            } else {
+                noGamesMessage.classList.add('hidden');
+            }
+
+            // Example: Simulate adding a game (for testing noGamesMessage)
+            // To test the "no games" message, comment out the static game items in HTML
+            // and uncomment the following:
+            /*
+            if (pastGamesList.children.length === 0) {
+                noGamesMessage.classList.remove('hidden');
+            }
+            */
+
+            // You would have a function like this to add games dynamically:
+            /*
+            function addGameToHistory(game) {
+                // game = { title: "New Quiz", date: "May 07, 2025", score: "7/10", correct: 7, incorrect: 3 }
+                noGamesMessage.classList.add('hidden'); // Hide message if adding games
+
+                const gameItem = document.createElement('div');
+                gameItem.className = "game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale";
+                gameItem.innerHTML = `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">${game.title}</h3>
+                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: ${game.date}</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">${game.score}</span></p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
+                            <span>${game.correct} Correct</span>
+                        </div>
+                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
+                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
+                            <span>${game.incorrect} Incorrect</span>
+                        </div>
+                    </div>
+                    <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                `;
+                pastGamesList.appendChild(gameItem);
+            }
+            // Example usage:
+            // addGameToHistory({ title: "History Buffs Quiz", date: "May 06, 2025", score: "9/10", correct: 9, incorrect: 1 });
+            */
+
+        });
+    </script>
+
+</body>
+</html>

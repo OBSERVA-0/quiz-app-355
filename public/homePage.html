@@ -4,3 +4,78 @@
 // when we recreate the homepage with the index no timer and no option to start quiz - can change up the design to make it a little different from the
 //index page
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Whiz</title>
+  <link rel="stylesheet" href="./css/homepage.css">
+</head>
+
+<body>
+  <div class="game-container">
+
+    <!-- Sky with multiple pixel clouds -->
+    <div class="sky">
+        <div class="pixel-cloud cloud1"></div>
+        <div class="pixel-cloud cloud2"></div>
+        <div class="pixel-cloud cloud3"></div>
+        <div class="pixel-cloud cloud4"></div>
+        <div class="pixel-cloud cloud5"></div>
+      </div>
+      
+
+    <!-- Heart lives -->
+    <div class="hearts">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+    </div>
+
+    <!-- Title and start button -->
+    <h1 class="title">Brain Blast Quiz</h1>
+    <h2 class="subtitle">Test your knowledge!</h2>
+    <a href="quiz.html">
+      <button class="start-button">START</button>
+    </a>
+
+    <!-- Mario next to mountain -->
+    <img class="green-mountain" src="./images/green-mountain.png" alt="mountain">
+    <img class="mario" src="./images/mario.png" alt="mario">
+
+    <!-- Bush on top of everything -->
+    <div class="ground">
+      <img class="bush" src="./images/bush.png" alt="bush">
+    </div>
+
+    <!-- Pole -->
+    <div class="pole">
+      <img class="pole" src="./images/pole.png" alt="pole">
+    </div>
+
+    <!-- Castle -->
+    <div>
+      <img class="castle" src="./images/castle.png" alt="castle">
+      </div>
+
+  <!-- Princess -->
+  <img class="princess" src="./images/princess-peach.png" alt="princess">
+
+      <!-- Pipe -->
+  <img class="pipe" src="./images/pipe.png" alt="pipe">
+
+   <!-- Bowser -->
+   <img class="bowser" src="./images/bowser.png" alt="bowser">
+
+   <!--Timer text was originally a button-->
+   <div class="start-timer-btn" disabled>Timer</div>
+   <div id="timer-display" class="timer-display">10:00</div>
+   
+  <script src="./js/home.js"></script>
+  
+  </div>
+</body>
+</html>
+

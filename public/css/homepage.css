@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #58c0e7;
+  color: #000;
+  overflow: hidden;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(to top, #58c0e7 60%, #a6eaff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Sky & Clouds */
+.pixel-cloud {
+  width: 240px;
+  height: 140px;
+  /* background: url('/images/pixel-cloud.png') no-repeat center center; */
+  background: url('/public/images/pixel-cloud.png') no-repeat center center;
+  background-size: contain;
+  image-rendering: pixelated;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.9;
+  animation: floatCloud linear infinite;
+}
+
+.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
+.cloud2 { top: 100px; left: -400px; animation-duration: 35s; }
+.cloud3 { top: 160px; left: -600px; animation-duration: 40s; }
+.cloud4 { top: 80px; left: -800px; animation-duration: 45s; }
+.cloud5 { top: 200px; left: -1000px; animation-duration: 50s; }
+
+@keyframes floatCloud {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(140vw); }
+}
+
+/* UI: Hearts, Title, Button */
+.hearts img {
+  width: 32px;
+  margin: 0 5px;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+.title {
+  font-size: 3rem;
+  color: yellow;
+  text-shadow: 3px 3px #000;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.start-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #ccc;
+  border: 3px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.start-button:hover {
+  background-color: #eee;
+}
+
+/* Scenery */
+.green-mountain,
+.mario,
+.castle,
+.pole,
+.pipe,
+.bowser,
+.princess {
+  position: absolute;
+  image-rendering: pixelated;
+  background: transparent;
+  border: none;
+}
+
+/* Individual element positioning */
+.green-mountain {
+  bottom: 100px;
+  left: 50px;
+  width: 400px;
+  z-index: 1;
+}
+
+.mario{
+  bottom: 10%;
+  position: absolute;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 20s;
+  left: 50px;
+  width: 80px;
+  z-index: 2;
+}
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  48% {
+    transform: rotateY(0deg); 
+  }
+  50% { 
+    left: calc(100% - 100px);
+    transform: rotateY(180deg); 
+  }
+  98% {
+    transform: rotateY(180deg); 
+  }
+  100% {
+    left: 0;    
+     transform: rotateY(0deg);
+  }
+}
+
+.bowser {
+bottom: 100px; 
+left: 75%;
+width: 100px;
+z-index: 3;
+animation: MoveUpDown 2s linear infinite;
+position: absolute;
+
+}
+@keyframes MoveUpDown {
+0%, 100% {
+  transform: translateY(0);
+}
+50% {
+  transform: translateY(-100px);
+  
+}
+}
+.pole {
+  bottom: 25px;
+  left: 75%;
+  height: 300px;
+  z-index: 1;
+}
+
+.castle {
+  bottom: 100px;
+  left: 85%;
+  height: 300px;
+  z-index: 4;
+}
+
+.princess {
+  bottom: 100px;
+  left: 90%;
+  height: 100px;
+  transform: scaleX(-1); /* flip horizontally */
+  z-index: 1000;
+}
+
+.pipe {
+  bottom: 77px;
+  left: 30%;
+  height: 120px;
+  z-index: 999;
+}
+
+/* Ground */
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/public/images/dirt.jpg') repeat-x;
+  background-size: contain;
+  image-rendering: pixelated;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 3;
+}
+
+
+.bush {
+  height: 120px;
+  bottom: 80px;
+  image-rendering: pixelated;
+  z-index: 999;
+  position: relative;
+}
+
+.timer-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 12px 40px;
+  background-color: #ffcc00;
+  color: #000;
+  border: 4px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
+  margin-top: 30px;
+  z-index: 10;
+}
+
+.timer-btn:hover {
+  background-color: #ffee58;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.timer-display {
+  margin-top: 5px;
+  font-size: 1.5rem;
+  color: yellow;
+  text-shadow: 3px 3px #000;
+  z-index: 10;
+}
+
+.start-timer-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #000;  
+  background: transparent;  
+  border: none; 
+  cursor: default;  
+  text-align: center;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;  
+}
+
+.start-timer-btn:disabled {
+  color: #aaa;  
+  cursor: not-allowed;  
+}
+

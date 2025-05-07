@@ -89,7 +89,8 @@ body {
     top: 0;
     width: 400px;
     height: 200px;
-    background: url('/images/pixel-cloud.png') no-repeat center center;
+    /* background: url('/images/pixel-cloud.png') no-repeat center center; */
+    background: url('/public/images/pixel-cloud.png') no-repeat center center;
     background-size: contain;
     image-rendering: pixelated;
     z-index: -1;

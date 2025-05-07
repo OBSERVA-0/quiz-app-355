@@ -3,79 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - Quiz App</title>
+    <title>Player Profile - Mario Quiz World</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body class="text-gray-800">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        .mario-bg {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCI+CjxyZWN0IHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzg5Y2ZmMCI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiM3N2JiZTciPjwvcmVjdD4KPHJlY3QgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSIyMCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSIzMCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSI0MCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSI1MCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8cmVjdCB4PSI2MCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzc3YmJlNyI+PC9yZWN0Pgo8L3N2Zz4=');
+            background-repeat: repeat;
+        }
+        
+        .brick-bg {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2U4NWQwNCIgLz4KPHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyIiBmaWxsPSIjOWEzNDAzIiAvPgo8cmVjdCB4PSIyMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIiIGZpbGw9IiM5YTM0MDMiIC8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZWM3MzE1IiAvPgo8cmVjdCB4PSIyMCIgeT0iMCIgd2lkdGg9IjIiIGhlaWdodD0iNDAiIGZpbGw9IiM5YTM0MDMiIC8+CjxyZWN0IHg9IjAiIHk9IjIwIiB3aWR0aD0iNDAiIGhlaWdodD0iMiIgZmlsbD0iIzlhMzQwMyIgLz4KPC9zdmc+');
+            background-repeat: repeat;
+        }
+        
+        .mushroom-pattern {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2U4MDkwOSIgLz4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iNSIgZmlsbD0id2hpdGUiIC8+CjxjaXJjbGUgY3g9IjMwIiBjeT0iMTAiIHI9IjUiIGZpbGw9IndoaXRlIiAvPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjMwIiByPSI1IiBmaWxsPSJ3aGl0ZSIgLz4KPC9zdmc+');
+        }
+        
+        .question-block {
+            background-color: #ffcf40;
+            border: 3px solid #ff9b00;
+            box-shadow: inset 2px 2px 0px #fff4c4, inset -2px -2px 0px #b37400;
+            animation: float 2s infinite ease-in-out;
+        }
+        
+        .mario-pipe {
+            background-color: #00b344;
+            border: 4px solid #008631;
+            border-radius: 0 0 25px 25px;
+            box-shadow: inset 5px 0 0 rgba(255, 255, 255, 0.3), inset -3px 0 0 rgba(0, 0, 0, 0.2);
+        }
 
-    <nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 shadow-md">
+        .pixel-border {
+            box-shadow: 
+                0 -3px 0 3px #000,
+                0 3px 0 3px #000,
+                3px 0 0 3px #000,
+                -3px 0 0 3px #000;
+        }
+        
+        .coin {
+            background-color: #fcd303;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffea7f;
+            animation: spin 3s infinite linear;
+        }
+        
+        .powerup-bounce {
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-jump:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-pic-container:hover .profile-pic-hover {
+            opacity: 1;
+        }
+        
+        .profile-pic-hover {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotateY(0deg); box-shadow: 0 0 10px #ffea7f; }
+            50% { transform: rotateY(90deg); box-shadow: 0 0 5px #ffea7f; }
+            100% { transform: rotateY(0deg); box-shadow: 0 0 10px #ffea7f; }
+        }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        
+        .coin-counter {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 5px 15px;
+            color: gold;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .star-rating {
+            color: gold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+        
+        .retro-button {
+            transition: all 0.1s ease;
+            box-shadow: 0 6px 0 0 #9c5200;
+            position: relative;
+            top: 0;
+        }
+        
+        .retro-button:hover {
+            top: 2px;
+            box-shadow: 0 4px 0 0 #9c5200;
+        }
+        
+        .retro-button:active {
+            top: 6px;
+            box-shadow: 0 0 0 0 #9c5200;
+        }
+        
+        .level-progress {
+            height: 24px;
+            background-color: #444;
+            border: 2px solid #000;
+            position: relative;
+            padding: 2px;
+        }
+        
+        .level-progress-bar {
+            height: 100%;
+            background-color: #2ecc71;
+            transition: width 1s ease-in-out;
+        }
+        
+        .pixel-card {
+            position: relative;
+            border: 4px solid #000;
+            box-shadow: 4px 4px 0 #000;
+        }
+        
+        /* Sound control */
+        .sound-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .sound-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="mario-bg text-gray-800">
+    <!-- Sound toggle button -->
+    <div class="sound-toggle" id="soundToggle">
+        <i class="fas fa-volume-up" id="soundIcon"></i>
+    </div>
+
+    <nav class="brick-bg text-white p-4 shadow-md pixel-border">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">QuizApp</a>
-            <div>
-                <a href="#" class="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">Home</a>
-                <a href="#" class="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">Quizzes</a>
-                <a href="#" class="px-3 py-2 rounded-md bg-blue-700 font-semibold">Profile</a>
+            <a href="#" class="text-2xl font-bold pixel-font flex items-center">
+                <img src="/api/placeholder/32/32" alt="Mushroom" class="mr-2 powerup-bounce"> 
+                MARIO QUIZ WORLD
+            </a>
+            <div class="hidden md:flex">
+                <a href="#" class="px-3 py-2 rounded-md hover:bg-red-700 transition-colors mx-1 retro-button bg-red-600">HOME</a>
+                <a href="#" class="px-3 py-2 rounded-md hover:bg-green-700 transition-colors mx-1 retro-button bg-green-600">QUIZZES</a>
+                <a href="#" class="px-3 py-2 rounded-md font-semibold mx-1 retro-button bg-yellow-500 hover:bg-yellow-600">PROFILE</a>
             </div>
+            <div class="md:hidden">
+                <button id="mobileMenuButton" class="text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden mt-2 p-2 container mx-auto bg-black bg-opacity-80 rounded-lg">
+            <a href="#" class="block px-3 py-2 rounded-md hover:bg-red-700 transition-colors mb-1 bg-red-800">HOME</a>
+            <a href="#" class="block px-3 py-2 rounded-md hover:bg-green-700 transition-colors mb-1 bg-green-800">QUIZZES</a>
+            <a href="#" class="block px-3 py-2 rounded-md font-semibold bg-yellow-600">PROFILE</a>
         </div>
     </nav>
 
     <main class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
+        <!-- Player level banner -->
+        <div class="mb-6 bg-black bg-opacity-70 text-white p-4 rounded-xl flex flex-wrap items-center justify-between">
+            <div class="flex items-center mb-3 md:mb-0">
+                <span class="pixel-font mr-3">LEVEL:</span>
+                <span id="playerLevel" class="text-2xl font-bold text-yellow-300">5</span>
+                <span class="ml-3 text-gray-300">- Super Quiz Player</span>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="level-progress">
+                    <div class="level-progress-bar" id="levelProgressBar" style="width: 65%;"></div>
+                    <span class="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">65/100 XP</span>
+                </div>
+            </div>
+        </div>
 
-        <section class="profile-card bg-white shadow-2xl rounded-xl p-6 md:p-10 mb-10 transition-all duration-300 ease-in-out">
-            <div class="flex flex-col md:flex-row items-center md:items-start">
+        <section class="pixel-card bg-white p-6 mb-10 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500"></div>
+            
+            <div class="flex flex-col md:flex-row items-center mt-8">
                 <div class="profile-picture-area mb-6 md:mb-0 md:mr-10 text-center relative group profile-pic-container">
-                    <img id="profileImage" src="https://placehold.co/160x160/3B82F6/FFFFFF?text=User" alt="User Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-indigo-500 object-cover shadow-lg">
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full profile-pic-hover">
-                        <button id="changePicBtn" class="text-white text-sm py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-colors">
+                    <div class="coin-counter mb-2">
+                        <i class="fas fa-coins mr-2 text-yellow-400"></i>
+                        <span id="coinCount">250</span>
+                    </div>
+                    
+                    <div class="question-block p-1 mb-4">
+                        <img id="profileImage" src="/api/placeholder/160/160" alt="Player Avatar" class="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-yellow-500 object-cover">
+                    </div>
+                    
+                    <div class="profile-pic-hover absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded">
+                        <button id="changePicBtn" class="text-white text-sm py-2 px-4 rounded-lg bg-green-600 hover:bg-green-700 transition-colors retro-button">
                             <i class="fas fa-camera mr-1"></i> Change
                         </button>
                     </div>
-                    <input type="file" id="profilePicInput" class="hidden-file-input" accept="image/*">
+                    <input type="file" id="profilePicInput" class="hidden" accept="image/*">
                 </div>
 
                 <div class="profile-info-area text-center md:text-left flex-grow">
                     <div class="username-container mb-3 flex items-center justify-center md:justify-start">
-                        <h1 id="usernameDisplay" class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 mr-3">CurrentUsername</h1>
-                        <input type="text" id="usernameInput" class="hidden text-3xl md:text-4xl font-bold border-b-2 border-indigo-500 focus:outline-none focus:border-blue-500 bg-transparent" value="CurrentUsername">
-                        <button id="editUsernameBtn" title="Edit Username" class="text-indigo-600 hover:text-indigo-800 transition-colors ml-2 p-2 rounded-full hover:bg-indigo-100">
+                        <h1 id="usernameDisplay" class="pixel-font text-xl md:text-2xl font-bold text-red-600 mr-3">PlayerOne</h1>
+                        <input type="text" id="usernameInput" class="hidden text-xl md:text-2xl font-bold border-b-2 border-red-500 focus:outline-none focus:border-red-700 bg-transparent" value="PlayerOne">
+                        <button id="editUsernameBtn" title="Edit Username" class="text-yellow-500 hover:text-yellow-600 transition-colors ml-2 p-2 rounded-full hover:bg-yellow-100">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button id="saveUsernameBtn" class="hidden bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-4 rounded-lg text-sm ml-2 transition-colors">
+                        <button id="saveUsernameBtn" class="hidden bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-4 rounded-lg text-sm ml-2 transition-colors retro-button">
                             <i class="fas fa-save mr-1"></i> Save
                         </button>
-                        <button id="cancelEditBtn" class="hidden bg-gray-400 hover:bg-gray-500 text-white font-semibold py-1 px-3 rounded-lg text-sm ml-2 transition-colors">
+                        <button id="cancelEditBtn" class="hidden bg-gray-400 hover:bg-gray-500 text-white font-semibold py-1 px-3 rounded-lg text-sm ml-2 transition-colors retro-button">
                             Cancel
                         </button>
                     </div>
-                    <p class="text-gray-500 text-sm mb-4">Joined: May 7, 2025</p>
+                    
+                    <p class="text-gray-500 text-sm mb-4">Adventure Started: May 7, 2025</p>
+                    
+                    <div class="star-rating text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
 
-                    <div class="stats grid grid-cols-1 sm:grid-cols-2 gap-4 text-center md:text-left">
-                        <div class="stat-item bg-gradient-to-br from-blue-50 to-indigo-100 p-4 rounded-lg shadow hover-scale">
-                            <p class="text-2xl font-bold text-indigo-600">15</p>
-                            <p class="text-sm text-gray-600">Quizzes Played</p>
+                    <div class="stats grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                        <div class="stat-item bg-red-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-red-400">
+                            <i class="fas fa-gamepad text-red-500 text-xl mb-2"></i>
+                            <p class="text-2xl font-bold text-red-600">15</p>
+                            <p class="text-xs text-gray-600">Quizzes Played</p>
                         </div>
-                        <div class="stat-item bg-gradient-to-br from-green-50 to-teal-100 p-4 rounded-lg shadow hover-scale">
+                        <div class="stat-item bg-green-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-green-400">
+                            <i class="fas fa-star text-green-500 text-xl mb-2"></i>
                             <p class="text-2xl font-bold text-green-600">85%</p>
-                            <p class="text-sm text-gray-600">Average Score</p>
+                            <p class="text-xs text-gray-600">Average Score</p>
+                        </div>
+                        <div class="stat-item bg-blue-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-blue-400">
+                            <i class="fas fa-trophy text-blue-500 text-xl mb-2"></i>
+                            <p class="text-2xl font-bold text-blue-600">5</p>
+                            <p class="text-xs text-gray-600">Achievements</p>
+                        </div>
+                        <div class="stat-item bg-purple-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-purple-400">
+                            <i class="fas fa-bolt text-purple-500 text-xl mb-2"></i>
+                            <p class="text-2xl font-bold text-purple-600">3</p>
+                            <p class="text-xs text-gray-600">Power-ups</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Achievements Section -->
+        <section class="mb-10 pixel-card bg-white p-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-yellow-300 pixel-font flex items-center">
+                <i class="fas fa-medal mr-2 text-yellow-500"></i>ACHIEVEMENTS
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4" id="achievementsList">
+                <div class="achievement-item text-center hover-scale cursor-pointer">
+                    <div class="bg-yellow-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-yellow-400">
+                        <i class="fas fa-flag-checkered text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-semibold">First Quiz</h3>
+                </div>
+                <div class="achievement-item text-center hover-scale cursor-pointer">
+                    <div class="bg-green-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-green-400">
+                        <i class="fas fa-award text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-semibold">Perfect Score</h3>
+                </div>
+                <div class="achievement-item text-center hover-scale cursor-pointer opacity-50">
+                    <div class="bg-gray-200 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-gray-400">
+                        <i class="fas fa-question text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-semibold">Locked</h3>
+                </div>
+                <div class="achievement-item text-center hover-scale cursor-pointer opacity-50">
+                    <div class="bg-gray-200 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-gray-400">
+                        <i class="fas fa-question text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-semibold">Locked</h3>
+                </div>
+                <div class="achievement-item text-center hover-scale cursor-pointer">
+                    <div class="bg-blue-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-blue-400">
+                        <i class="fas fa-calendar-check text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-sm font-semibold">Streak 7 Days</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game History Section -->
         <section class="past-games">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-indigo-300">
-                <i class="fas fa-history mr-2 text-indigo-500"></i>Game History
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-green-300 pixel-font flex items-center">
+                <i class="fas fa-history mr-2 text-green-500"></i>QUEST LOG
             </h2>
             <div id="pastGamesList" class="space-y-6">
-                <div class="game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale">
+                <div class="game-item pixel-card bg-white p-5 md:p-6 hover-scale">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">Quiz: General Knowledge Challenge</h3>
-                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: May 01, 2025</p>
+                        <div class="flex items-center">
+                            <img src="/api/placeholder/32/32" alt="Quiz Type" class="w-8 h-8 mr-3">
+                            <h3 class="text-xl font-semibold text-green-700">General Knowledge Challenge</h3>
+                        </div>
+                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: May 01, 2025</p>
                     </div>
-                    <div class="mb-4">
-                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">8 / 10</span></p>
+                    <div class="mb-4 flex items-center">
+                        <div class="mr-4">
+                            <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">8 / 10</span></p>
+                        </div>
+                        <div class="coin ml-2 w-5 h-5 inline-block"></div>
+                        <span class="ml-1 text-yellow-600 font-bold">+25</span>
+                        <div class="ml-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">+15 XP</span>
+                        </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
@@ -87,16 +363,28 @@
                             <span>2 Incorrect</span>
                         </div>
                     </div>
-                     <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                    <button class="mt-4 text-sm bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded retro-button">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
                 </div>
 
-                <div class="game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale">
+                <div class="game-item pixel-card bg-white p-5 md:p-6 hover-scale">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">Quiz: Science Wonders</h3>
-                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: April 28, 2025</p>
+                        <div class="flex items-center">
+                            <img src="/api/placeholder/32/32" alt="Quiz Type" class="w-8 h-8 mr-3">
+                            <h3 class="text-xl font-semibold text-blue-700">Science Wonders</h3>
+                        </div>
+                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: April 28, 2025</p>
                     </div>
-                    <div class="mb-4">
-                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-orange-500">5 / 10</span></p>
+                    <div class="mb-4 flex items-center">
+                        <div class="mr-4">
+                            <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-orange-500">5 / 10</span></p>
+                        </div>
+                        <div class="coin ml-2 w-5 h-5 inline-block"></div>
+                        <span class="ml-1 text-yellow-600 font-bold">+15</span>
+                        <div class="ml-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">+8 XP</span>
+                        </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
@@ -108,148 +396,313 @@
                             <span>5 Incorrect</span>
                         </div>
                     </div>
-                    <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                    <button class="mt-4 text-sm bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded retro-button">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
                 </div>
 
-                </div>
+            </div>
             <p id="noGamesMessage" class="text-gray-500 text-center py-10 hidden">
                 <i class="fas fa-ghost text-3xl mb-2"></i><br>
-                No past games to display yet. <br> Go play some quizzes to see your history!
+                No quests completed yet. <br> Start playing to build your adventure log!
             </p>
         </section>
     </main>
 
-    <footer class="text-center p-6 mt-10 text-sm text-gray-500">
-        © 2025 QuizApp. All rights reserved.
+    <footer class="brick-bg text-center p-6 mt-10 text-sm text-white">
+        <div class="container mx-auto">
+            <p>© 2025 Mario Quiz World. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Hidden audio elements -->
+    <audio id="coinSound" preload="auto">
+        <source src="https://assets.codepen.io/21542/Mario-coin-sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="buttonSound" preload="auto">
+        <source src="https://assets.codepen.io/21542/Mario-jump-sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source src="https://assets.codepen.io/21542/smw_1-up.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://assets.codepen.io/21542/sm64_file_select.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // DOM Elements
-            const profileImage = document.getElementById('profileImage');
-            const changePicBtn = document.getElementById('changePicBtn');
-            const profilePicInput = document.getElementById('profilePicInput');
-
-            const usernameDisplay = document.getElementById('usernameDisplay');
-            const usernameInput = document.getElementById('usernameInput');
-            const editUsernameBtn = document.getElementById('editUsernameBtn');
-            const saveUsernameBtn = document.getElementById('saveUsernameBtn');
-            const cancelEditBtn = document.getElementById('cancelEditBtn');
-
-            const pastGamesList = document.getElementById('pastGamesList');
-            const noGamesMessage = document.getElementById('noGamesMessage');
-
-            // --- Profile Picture Change ---
-            changePicBtn.addEventListener('click', () => {
-                profilePicInput.click(); // Trigger hidden file input
-            });
-
-            profilePicInput.addEventListener('change', (event) => {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        profileImage.src = e.target.result;
-                        // Here, you would typically send the file to your server
-                        console.log("Profile picture changed (client-side). Send to server for saving.");
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // --- Username Edit ---
-            let originalUsername = usernameDisplay.textContent;
-            editUsernameBtn.addEventListener('click', () => {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sound elements
+        const coinSound = document.getElementById('coinSound');
+        const buttonSound = document.getElementById('buttonSound');
+        const successSound = document.getElementById('successSound');
+        const bgMusic = document.getElementById('bgMusic');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundIcon = document.getElementById('soundIcon');
+        
+        // Username editing elements
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const usernameInput = document.getElementById('usernameInput');
+        const editUsernameBtn = document.getElementById('editUsernameBtn');
+        const saveUsernameBtn = document.getElementById('saveUsernameBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        
+        // Profile picture elements
+        const profileImage = document.getElementById('profileImage');
+        const changePicBtn = document.getElementById('changePicBtn');
+        const profilePicInput = document.getElementById('profilePicInput');
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        // Level progress animation
+        const levelProgressBar = document.getElementById('levelProgressBar');
+        const playerLevel = document.getElementById('playerLevel');
+        
+        // Achievements and stats
+        const achievementsList = document.getElementById('achievementsList');
+        const statItems = document.querySelectorAll('.stat-item');
+        
+        // Past games
+        const pastGamesList = document.getElementById('pastGamesList');
+        const noGamesMessage = document.getElementById('noGamesMessage');
+        
+        // Sound settings (default to on)
+        let soundEnabled = true;
+        
+        // Initialize sound controls
+        soundToggle.addEventListener('click', function() {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+                soundIcon.className = 'fas fa-volume-up';
+                bgMusic.play();
+            } else {
+                soundIcon.className = 'fas fa-volume-mute';
+                bgMusic.pause();
+            }
+        });
+        
+        // Play background music with low volume
+        bgMusic.volume = 0.3;
+        setTimeout(() => {
+            if (soundEnabled) {
+                bgMusic.play().catch(e => console.log('Audio autoplay was prevented'));
+            }
+        }, 1000);
+        
+        // Username Editing
+        editUsernameBtn.addEventListener('click', function() {
+            if (soundEnabled) buttonSound.play();
+            usernameDisplay.classList.add('hidden');
+            usernameInput.classList.remove('hidden');
+            editUsernameBtn.classList.add('hidden');
+            saveUsernameBtn.classList.remove('hidden');
+            cancelEditBtn.classList.remove('hidden');
+            usernameInput.focus();
+        });
+        
+        saveUsernameBtn.addEventListener('click', function() {
+            if (soundEnabled) successSound.play();
+            const newUsername = usernameInput.value.trim();
+            if (newUsername) {
+                usernameDisplay.textContent = newUsername;
+                // Here you would typically send this update to your server
+                showToast('Username updated successfully!');
+            }
+            toggleUsernameEditMode(false);
+        });
+        
+        cancelEditBtn.addEventListener('click', function() {
+            if (soundEnabled) buttonSound.play();
+            usernameInput.value = usernameDisplay.textContent;
+            toggleUsernameEditMode(false);
+        });
+        
+        function toggleUsernameEditMode(editing) {
+            if (editing) {
                 usernameDisplay.classList.add('hidden');
-                editUsernameBtn.classList.add('hidden');
-                usernameInput.value = usernameDisplay.textContent; // Set current username to input
                 usernameInput.classList.remove('hidden');
+                editUsernameBtn.classList.add('hidden');
                 saveUsernameBtn.classList.remove('hidden');
                 cancelEditBtn.classList.remove('hidden');
-                usernameInput.focus();
-            });
-
-            saveUsernameBtn.addEventListener('click', () => {
-                const newUsername = usernameInput.value.trim();
-                if (newUsername && newUsername !== usernameDisplay.textContent) {
-                    usernameDisplay.textContent = newUsername;
-                    originalUsername = newUsername; // Update original for next edit
-                    // Here, you would typically send the newUsername to your server
-                    console.log("Username updated to:", newUsername, "(client-side). Send to server.");
-                }
-                // Revert to display mode
-                usernameInput.classList.add('hidden');
-                saveUsernameBtn.classList.add('hidden');
-                cancelEditBtn.classList.add('hidden');
-                usernameDisplay.classList.remove('hidden');
-                editUsernameBtn.classList.remove('hidden');
-            });
-
-            cancelEditBtn.addEventListener('click', () => {
-                usernameInput.classList.add('hidden');
-                saveUsernameBtn.classList.add('hidden');
-                cancelEditBtn.classList.add('hidden');
-                
-                usernameDisplay.classList.remove('hidden');
-                editUsernameBtn.classList.remove('hidden');
-                usernameInput.value = originalUsername; // Reset to original
-            });
-
-
-            // --- Past Games (Example: Check if list is empty) ---
-            // In a real app, you'd fetch this data and populate the list.
-            // This is just to show/hide the "no games" message based on current static content.
-            if (pastGamesList.children.length === 0) {
-                noGamesMessage.classList.remove('hidden');
             } else {
-                noGamesMessage.classList.add('hidden');
+                usernameDisplay.classList.remove('hidden');
+                usernameInput.classList.add('hidden');
+                editUsernameBtn.classList.remove('hidden');
+                saveUsernameBtn.classList.add('hidden');
+                cancelEditBtn.classList.add('hidden');
             }
-
-            // Example: Simulate adding a game (for testing noGamesMessage)
-            // To test the "no games" message, comment out the static game items in HTML
-            // and uncomment the following:
-            /*
-            if (pastGamesList.children.length === 0) {
+        }
+        
+        // Profile Picture Changing
+        changePicBtn.addEventListener('click', function() {
+            if (soundEnabled) buttonSound.play();
+            profilePicInput.click();
+        });
+        
+        profilePicInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    profileImage.src = event.target.result;
+                    if (soundEnabled) successSound.play();
+                    showToast('Profile picture updated!');
+                    // Here you would typically upload the image to your server
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Mobile Menu Toggle
+        mobileMenuButton.addEventListener('click', function() {
+            if (soundEnabled) buttonSound.play();
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Level XP animation (for demo purposes)
+        setTimeout(() => {
+            levelProgressBar.style.width = '65%';
+        }, 500);
+        
+        // Add click handlers to stats
+        statItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (soundEnabled) coinSound.play();
+                const statType = this.querySelector('p:last-child').textContent;
+                showToast(`Viewing detailed ${statType} stats!`);
+                // Here you would typically navigate to or display detailed stats
+            });
+        });
+        
+        // Dynamically load past games (demo function)
+        function loadPastGames() {
+            // This would normally come from your API/database
+            const games = [
+                {
+                    title: "General Knowledge Challenge",
+                    date: "May 01, 2025",
+                    score: "8 / 10",
+                    scoreClass: "text-green-600",
+                    correct: 8,
+                    incorrect: 2,
+                    coins: 25,
+                    xp: 15
+                },
+                {
+                    title: "Science Wonders",
+                    date: "April 28, 2025",
+                    score: "5 / 10",
+                    scoreClass: "text-orange-500",
+                    correct: 5,
+                    incorrect: 5,
+                    coins: 15,
+                    xp: 8
+                }
+            ];
+            
+            if (games.length > 0) {
+                pastGamesList.innerHTML = ''; // Clear existing games
+                noGamesMessage.classList.add('hidden');
+                
+                games.forEach(game => {
+                    // Create game history item (implementation not shown for brevity)
+                    // This would recreate the HTML structure for each game
+                });
+            } else {
+                pastGamesList.innerHTML = '';
                 noGamesMessage.classList.remove('hidden');
             }
-            */
-
-            // You would have a function like this to add games dynamically:
-            /*
-            function addGameToHistory(game) {
-                // game = { title: "New Quiz", date: "May 07, 2025", score: "7/10", correct: 7, incorrect: 3 }
-                noGamesMessage.classList.add('hidden'); // Hide message if adding games
-
-                const gameItem = document.createElement('div');
-                gameItem.className = "game-item bg-white shadow-lg rounded-xl p-5 md:p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out hover-scale";
-                gameItem.innerHTML = `
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                        <h3 class="text-xl font-semibold text-indigo-700 mb-2 sm:mb-0">${game.title}</h3>
-                        <p class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: ${game.date}</p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">${game.score}</span></p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
-                            <span>${game.correct} Correct</span>
-                        </div>
-                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
-                            <span>${game.incorrect} Incorrect</span>
-                        </div>
-                    </div>
-                    <button class="mt-4 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors">View Details <i class="fas fa-arrow-right ml-1"></i></button>
-                `;
-                pastGamesList.appendChild(gameItem);
-            }
-            // Example usage:
-            // addGameToHistory({ title: "History Buffs Quiz", date: "May 06, 2025", score: "9/10", correct: 9, incorrect: 1 });
-            */
-
+        }
+        
+        // Toast notification system
+        function showToast(message) {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-80 text-white px-6 py-3 rounded-lg z-50 pixel-font';
+            toast.textContent = message;
+            
+            // Add to DOM
+            document.body.appendChild(toast);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+        
+        // Add sound effects to buttons
+        document.querySelectorAll('.retro-button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (soundEnabled) buttonSound.play();
+            });
         });
+        
+        // Add coin animation on hover to coin elements
+        document.querySelectorAll('.coin').forEach(coin => {
+            coin.addEventListener('mouseenter', function() {
+                if (soundEnabled) coinSound.play();
+            });
+        });
+        
+        // Simulated Level Up feature
+        let currentXP = 65;
+        document.getElementById('levelProgressBar').addEventListener('click', function() {
+            currentXP += 10;
+            if (currentXP >= 100) {
+                // Level up!
+                currentXP = currentXP - 100;
+                const newLevel = parseInt(playerLevel.textContent) + 1;
+                playerLevel.textContent = newLevel;
+                levelProgressBar.style.width = currentXP + '%';
+                
+                if (soundEnabled) {
+                    bgMusic.pause();
+                    successSound.play();
+                    setTimeout(() => {
+                        if (soundEnabled) bgMusic.play();
+                    }, 1000);
+                }
+                
+                // Create level up animation
+                const levelUpMsg = document.createElement('div');
+                levelUpMsg.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-black px-8 py-4 rounded-lg z-50 text-2xl font-bold pixel-font text-center';
+                levelUpMsg.innerHTML = `LEVEL UP!<br>You are now level ${newLevel}`;
+                document.body.appendChild(levelUpMsg);
+                
+                setTimeout(() => {
+                    levelUpMsg.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                    setTimeout(() => {
+                        document.body.removeChild(levelUpMsg);
+                    }, 500);
+                }, 2000);
+            } else {
+                // Just update XP
+                if (soundEnabled) coinSound.play();
+                levelProgressBar.style.width = currentXP + '%';
+            }
+            
+            // Update XP text
+            const xpText = levelProgressBar.nextElementSibling;
+            xpText.textContent = `${currentXP}/100 XP`;
+        });
+    });
     </script>
-
 </body>
 </html>

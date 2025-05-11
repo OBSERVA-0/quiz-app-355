@@ -189,8 +189,20 @@ h1.title {
     z-index: 1; /* behind characters and stars */
   }
   
-  .dirt {
+.dirt {
     width: calc(100% / 7); /* divides the screen evenly between 7 blocks */
     height: 36px;
+  }
+  
+  .lakitu {
+    position: absolute;
+    top: 10px; /* Position at the top of the screen */
+    left: 50%; /* Start at the horizontal center */
+    transform: translateX(-50%); /* Center it horizontally */
+    width: 100px; /* Set the size */
+    height: auto;
+    z-index: 3; /* Ensure it's on top of other elements */
+    transition: left 0.4s ease; /* Slower movement */
+
   }
   

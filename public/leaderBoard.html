@@ -89,6 +89,27 @@
         <img src="images/dirt.jpg" class="dirt">
       </div>
      
+      <img src="images/lakitu.png" class="lakitu">
   </div>
+
+  <script>
+    const lakitu = document.querySelector('.lakitu');
+    const screenWidth = window.innerWidth; // Get screen width to calculate left and right
+  
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX; // Get mouse's X coordinate
+      
+      // If the cursor is on the left half of the screen, move the Lakitu to the left
+      if (mouseX < screenWidth / 2) {
+        lakitu.style.left = `${mouseX - 50}px`; // Move Lakitu to the left of the cursor
+      }
+      // If the cursor is on the right half of the screen, move the Lakitu to the right
+      else {
+        lakitu.style.left = `${mouseX + 50}px`; // Move Lakitu to the right of the cursor
+      }
+    });
+  </script>
+  
+  
 </body>
 </html>

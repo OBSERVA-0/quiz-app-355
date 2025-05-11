@@ -2,52 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login / Sign Up</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/SignUp.css" />
+  <link rel="stylesheet" href="./css/SignUp.css" />
+  <title>Sign Up / Log In</title>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="card-switch">
-
-      <!-- ✅ The checkbox toggle must be before the label and flip-card -->
-      <input type="checkbox" class="toggle" id="flipToggle" />
-
-      <label class="switch" for="flipToggle">
+      <label class="switch">
+        <input type="checkbox" class="toggle" />
         <span class="slider"></span>
         <span class="card-side"></span>
+        <div class="flip-card__inner">
+          <div class="flip-card__front">
+            <div class="title">Log in</div>
+            <form class="flip-card__form" action="">
+              <input class="flip-card__input" name="email" placeholder="Email" type="email" />
+              <input class="flip-card__input" name="password" placeholder="Password" type="password" />
+              <p class="message"></p>
+              <button class="flip-card__btn">Let’s go</button>
+            </form>
+          </div>
+          <div class="flip-card__back">
+            <div class="title">Sign up</div>
+            <form class="flip-card__form" action="">
+              <input class="flip-card__input" placeholder="Name" type="text" />
+              <input class="flip-card__input" name="email" placeholder="Email" type="email" />
+              <input class="flip-card__input" name="password" placeholder="Password" type="password" />
+              <p class="message"></p>
+              <button class="flip-card__btn">Confirm</button>
+            </form>
+          </div>
+        </div>
       </label>
-
-      <!-- Flip Card Container -->
-      <div class="flip-card__inner">
-        <!-- Login Form -->
-        <div class="flip-card__front">
-          <div class="title">Log in</div>
-          <form class="flip-card__form" action="#">
-            <input class="flip-card__input" name="email" placeholder="Email" type="email" />
-            <input class="flip-card__input" name="password" placeholder="Password" type="password" />
-            <p class="message"></p>
-            <button class="flip-card__btn" type="submit">Let's go</button>
-          </form>
-        </div>
-
-        <!-- Signup Form -->
-        <div class="flip-card__back">
-          <div class="title">Sign up</div>
-          <form class="flip-card__form" action="#">
-            <input class="flip-card__input" name="name" placeholder="Name" type="text" />
-            <input class="flip-card__input" name="email" placeholder="Email" type="email" />
-            <input class="flip-card__input" name="password" placeholder="Password" type="password" />
-            <p class="message"></p>
-            <button class="flip-card__btn" type="submit">Confirm</button>
-          </form>
-        </div>
-      </div>
-
     </div>
   </div>
-
 </body>
 </html>

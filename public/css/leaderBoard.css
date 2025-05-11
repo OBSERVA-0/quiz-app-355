@@ -6,7 +6,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px); /* Adjust the jump height here */
+    transform: translateY(-20px);
   }
   100% {
     transform: translateY(0);
@@ -18,10 +18,28 @@
     transform: translateX(0);
   }
   50% {
-    transform: translateX(80vw); /* Move Yoshi to the right side */
+    transform: translateX(80vw);
   }
   100% {
-    transform: translateX(0); /* Return to starting position */
+    transform: translateX(0);
+  }
+}
+
+@keyframes star-shoot {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+    visibility: visible;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
   }
 }
 
@@ -30,13 +48,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Press Start 2P', cursive;
-  background: #66ccff; /* Sky blue for Mario world */
+  background: #66ccff;
   color: #fff;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
   text-align: center;
 }
 
@@ -65,7 +83,7 @@ h1.title {
   background-color: #0099cc;
   border-radius: 10px;
   padding: 15px;
-  width: 60%; /* Make it narrower */
+  width: 60%;
   margin: 20px auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   z-index: 2;
@@ -114,7 +132,7 @@ h1.title {
   color: #000;
 }
 
-/* Characters (Mario, Luigi, Yoshi) */
+/* Characters (Mario, Luigi, etc.) */
 .characters {
   position: absolute;
   bottom: 30px;
@@ -129,19 +147,50 @@ h1.title {
   width: 70px;
   height: auto;
   margin: 0 15px;
-  animation: jump 1s ease-in-out infinite; /* Make Mario and Luigi jump */
+  animation: jump 1s ease-in-out infinite;
 }
 
 .luigi {
-  animation-delay: 0.5s; /* Stagger Luigi's jump */
+  animation-delay: 0.5s;
 }
 
-/* Yoshi running animation */
-.yoshi {
-  width: 80px; /* Adjust size of Yoshi */
-  height: auto;
-  animation: run 4s ease-in-out infinite; /* Yoshi runs from left to right */
+/* Shooting Stars */
+.star {
   position: absolute;
-  bottom: 30px; /* Keep Yoshi on the ground */
-  left: 0; /* Start at the left side of the screen */
+  width: 40px;
+  height: auto;
+  transform: translateX(-100vw);
+  animation: star-shoot 15s linear infinite;
+  filter: drop-shadow(0 0 15px yellow) brightness(1.5);
+  opacity: 1;
+  visibility: hidden;
+  animation-fill-mode: forwards;
+  z-index: -1;
 }
+
+.star:nth-child(1) { top: 30px; animation-delay: 0s; }
+.star:nth-child(2) { top: 60px; animation-delay: 4s; }
+.star:nth-child(3) { top: 100px; animation-delay: 8s; }
+.star:nth-child(4) { top: 140px; animation-delay: 2s; }
+.star:nth-child(5) { top: 180px; animation-delay: 6s; }
+.star:nth-child(6) { top: 220px; animation-delay: 10s; }
+.star:nth-child(7) { top: 260px; animation-delay: 1s; }
+.star:nth-child(8) { top: 300px; animation-delay: 7s; }
+.star:nth-child(9) { top: 340px; animation-delay: 3s; }
+.star:nth-child(10) { top: 380px; animation-delay: 9s; }
+
+.dirt-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1; /* behind characters and stars */
+  }
+  
+  .dirt {
+    width: calc(100% / 7); /* divides the screen evenly between 7 blocks */
+    height: 36px;
+  }
+  

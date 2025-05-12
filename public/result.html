@@ -9,6 +9,9 @@
 </head>
 
 <body>
+
+  <audio id="victory-sound" src="./sound/victory.mp3" preload="auto"></audio>
+
   <!-- End of game page -->
   <div class="game-container">
     <div class="stars">
@@ -71,6 +74,29 @@
   }
   document.querySelector('.score').after(message);
 </script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('victory-sound');
+
+    const playVictorySound = () => {
+      if (audio) {
+        audio.volume = 1.0;
+        audio.play().catch(err => {
+          console.warn("Autoplay blocked. Waiting for user interaction.");
+        });
+      }
+
+      document.removeEventListener('click', playVictorySound);
+    };
+
+    playVictorySound();
+    document.addEventListener('click', playVictorySound);
+  });
+</script>
+
+
+<script src="js/result.js"></script>
 
 </body>
 </html>

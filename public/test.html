@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound Test</title>
+</head>
+<body>
+  <h1>Click the button to test the sound</h1>
+  <button id="play-btn">Play Sound</button>
+
+  <audio id="click-sound" src="sound/coinSound.mp3" preload="auto"></audio>
+
+  <script>
+    document.getElementById('play-btn').addEventListener('click', () => {
+      const clickSound = document.getElementById('click-sound');
+      clickSound.currentTime = 0;
+      clickSound.play().catch(e => {
+        console.error("Playback error:", e);
+      });
+    });
+  </script>
+</body>
+</html>

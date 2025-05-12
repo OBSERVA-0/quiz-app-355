@@ -5,8 +5,9 @@
   <title>Quiz Whiz</title>
   <link rel="stylesheet" href="./css/home.css">
 </head>
-
 <body>
+
+  <audio id="click-sound" src="./sound/coinSound.mp3" preload="auto"></audio>
 
   <div class="top-bar">
     <a href="leaderBoard.html" class="hud-button">🏆 Leaderboards</a>
@@ -23,8 +24,7 @@
         <div class="pixel-cloud cloud3"></div>
         <div class="pixel-cloud cloud4"></div>
         <div class="pixel-cloud cloud5"></div>
-      </div>
-      
+    </div>
 
     <!-- Heart lives -->
     <div class="hearts">
@@ -39,7 +39,7 @@
     <h1 class="title">Brain Blast Quiz</h1>
     <h2 class="subtitle">Test your knowledge!</h2>
     <a href="quiz.html">
-      <button class="start-button">START</button>
+      <button class="start-button" id="start-btn">START</button>
     </a>
 
     <!-- Mario next to mountain -->
@@ -59,23 +59,23 @@
     <!-- Castle -->
     <div>
       <img class="castle" src="./images/castle.png" alt="castle">
-      </div>
+    </div>
 
-  <!-- Princess -->
-  <img class="princess" src="./images/princess-peach.png" alt="princess">
+    <!-- Princess -->
+    <img class="princess" src="./images/princess-peach.png" alt="princess">
 
-      <!-- Pipe -->
-  <img class="pipe" src="./images/pipe.png" alt="pipe">
+    <!-- Pipe -->
+    <img class="pipe" src="./images/pipe.png" alt="pipe">
 
-   <!-- Bowser -->
-   <img class="bowser" src="./images/bowser.png" alt="bowser">
+    <!-- Bowser -->
+    <img class="bowser" src="./images/bowser.png" alt="bowser">
 
-   <!--Timer text was originally a button-->
-   <div class="start-timer-btn" disabled>Timer</div>
-   <div id="timer-display" class="timer-display">10:00</div>
-   
-  <script src="./js/home.js"></script>
-  
+    <!-- Timer -->
+    <div class="start-timer-btn" id="start-timer-btn" disabled>Timer</div>
+    <div id="timer-display" class="timer-display">10:00</div>
+
   </div>
+
+  <script src="./js/home.js"></script>
 </body>
 </html>

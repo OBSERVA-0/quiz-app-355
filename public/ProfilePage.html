@@ -7,22 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/profilePage.css">
+     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body class="mario-bg text-gray-800">
-    <!-- Sound toggle button -->
     <div class="sound-toggle" id="soundToggle">
         <i class="fas fa-volume-up" id="soundIcon"></i>
     </div>
 
     <nav class="brick-bg text-white p-4 shadow-md pixel-border">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold pixel-font flex items-center">
-                <img src="./images/retro image of a mushroom video game theme.png" alt="Mushroom" class="mr-2 powerup-bounce" style="width: 200px; height: auto; border-radius: 50%;">
-
-            </a> 
+            <a href="index.html" class="text-2xl font-bold pixel-font flex items-center">
+                <img src="./images/star.png" alt="Star Icon" class="mr-2 h-6 w-6">
+                <span>Quiz Whiz</span>
+            </a>
             <div class="hidden md:flex">
                 <a href="index.html" class="px-3 py-2 rounded-md hover:bg-red-700 transition-colors mx-1 retro-button bg-red-600">HOME</a>
-                <a href="result.html" class="px-3 py-2 rounded-md hover:bg-green-700 transition-colors mx-1 retro-button bg-green-600">QUIZZES</a>
+                <a href="leaderBoard.html" class="px-3 py-2 rounded-md hover:bg-yellow-600 transition-colors mx-1 retro-button bg-yellow-500">LEADERBOARD</a>
+                <a href="#" id="navLogoutButton" class="px-3 py-2 rounded-md hover:bg-gray-700 transition-colors mx-1 retro-button bg-gray-600">LOG OUT</a>
             </div>
             <div class="md:hidden">
                 <button id="mobileMenuButton" class="text-white">
@@ -30,49 +31,52 @@
                 </button>
             </div>
         </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-80 p-4">
+            <a href="index.html" class="block text-white py-2 pixel-font">HOME</a>
+            <a href="leaderBoard.html" class="block text-white py-2 pixel-font">LEADERBOARD</a>
+             <a href="#" id="mobileLogoutButton" class="block text-white py-2 pixel-font">LOG OUT</a>
+        </div>
     </nav>
 
     <main class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
-        <!-- Player level banner -->
         <div class="mb-6 bg-black bg-opacity-70 text-white p-4 rounded-xl flex flex-wrap items-center justify-between">
             <div class="flex items-center mb-3 md:mb-0">
                 <span class="pixel-font mr-3">LEVEL:</span>
-                <span id="playerLevel" class="text-2xl font-bold text-yellow-300">5</span>
-                <span class="ml-3 text-gray-300">- Super Quiz Player</span>
-            </div>
+                <span id="playerLevel" class="text-2xl font-bold text-yellow-300">1</span>
+                </div>
             <div class="w-full md:w-1/2">
                 <div class="level-progress">
-                    <div class="level-progress-bar" id="levelProgressBar" style="width: 65%;"></div>
-                    <span class="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">65/100 XP</span>
+                    <div class="level-progress-bar" id="levelProgressBar" style="width: 0%;"></div>
+                    <span id="xpText" class="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">0/100 XP</span>
                 </div>
             </div>
         </div>
 
         <section class="pixel-card bg-white p-6 mb-10 relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500"></div>
-            
+
             <div class="flex flex-col md:flex-row items-center mt-8">
                 <div class="profile-picture-area mb-6 md:mb-0 md:mr-10 text-center relative group profile-pic-container">
                     <div class="coin-counter mb-2">
                         <i class="fas fa-coins mr-2 text-yellow-400"></i>
-                        <span id="coinCount">250</span>
+                        <span id="coinCount">0</span>
                     </div>
-                    
+
                     <div class="question-block p-1 mb-4">
                         <img id="profileImage" src="./images/retro image of a mushroom video game theme.png" alt="Player Avatar" class="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-yellow-500 object-cover">
                     </div>
-                    
+
                     <div class="profile-pic-hover absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded">
                         <button id="changePicBtn" class="text-white text-sm py-2 px-4 rounded-lg bg-green-600 hover:bg-green-700 transition-colors retro-button">
                             <i class="fas fa-camera mr-1"></i> Change
                         </button>
                     </div>
-                    <input type="file" id="profilePicInput" class="hidden" accept="image/*">
+                     <input type="file" id="profilePicInput" class="hidden" accept="image/*">
                 </div>
 
                 <div class="profile-info-area text-center md:text-left flex-grow">
                     <div class="username-container mb-3 flex items-center justify-center md:justify-start">
-                        <h1 id="usernameDisplay" class="pixel-font text-xl md:text-2xl font-bold text-red-600 mr-3">PlayerOne</h1>
+                         <h1 id="usernameDisplay" class="pixel-font text-xl md:text-2xl font-bold text-red-600 mr-3">PlayerOne</h1>
                         <input type="text" id="usernameInput" class="hidden text-xl md:text-2xl font-bold border-b-2 border-red-500 focus:outline-none focus:border-red-700 bg-transparent" value="PlayerOne">
                         <button id="editUsernameBtn" title="Edit Username" class="text-yellow-500 hover:text-yellow-600 transition-colors ml-2 p-2 rounded-full hover:bg-yellow-100">
                             <i class="fas fa-pencil-alt"></i>
@@ -84,192 +88,62 @@
                             Cancel
                         </button>
                     </div>
-                    
-                    <p class="text-gray-500 text-sm mb-4">Adventure Started: May 7, 2025</p>
-                    
-                    <div class="star-rating text-2xl mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                    </div>
+
+                     <p id="joinedDate" class="text-gray-500 text-sm mb-4">Joined: Loading...</p>
 
                     <div class="stats grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                         <div class="stat-item bg-red-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-red-400">
                             <i class="fas fa-gamepad text-red-500 text-xl mb-2"></i>
-                            <p class="text-2xl font-bold text-red-600">15</p>
+                            <p id="statQuizzesPlayed" class="text-2xl font-bold text-red-600">0</p>
                             <p class="text-xs text-gray-600">Quizzes Played</p>
                         </div>
                         <div class="stat-item bg-green-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-green-400">
                             <i class="fas fa-star text-green-500 text-xl mb-2"></i>
-                            <p class="text-2xl font-bold text-green-600">85%</p>
+                             <p id="statAverageScore" class="text-2xl font-bold text-green-600">0%</p>
                             <p class="text-xs text-gray-600">Average Score</p>
                         </div>
                         <div class="stat-item bg-blue-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-blue-400">
                             <i class="fas fa-trophy text-blue-500 text-xl mb-2"></i>
-                            <p class="text-2xl font-bold text-blue-600">5</p>
+                             <p id="statAchievements" class="text-2xl font-bold text-blue-600">0</p>
                             <p class="text-xs text-gray-600">Achievements</p>
                         </div>
-                        <div class="stat-item bg-purple-100 p-4 rounded-lg shadow hover-jump cursor-pointer border-2 border-purple-400">
-                            <i class="fas fa-bolt text-purple-500 text-xl mb-2"></i>
-                            <p class="text-2xl font-bold text-purple-600">3</p>
-                            <p class="text-xs text-gray-600">Power-ups</p>
-                        </div>
-                    </div>
+                         </div>
                 </div>
             </div>
         </section>
 
-        <!-- Achievements Section -->
         <section class="mb-10 pixel-card bg-white p-6">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-yellow-300 pixel-font flex items-center">
                 <i class="fas fa-medal mr-2 text-yellow-500"></i>ACHIEVEMENTS
             </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4" id="achievementsList">
-                <div class="achievement-item text-center hover-scale cursor-pointer">
-                    <div class="bg-yellow-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-yellow-400">
-                        <i class="fas fa-flag-checkered text-yellow-500 text-2xl"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold">First Quiz</h3>
-                </div>
-                <div class="achievement-item text-center hover-scale cursor-pointer">
-                    <div class="bg-green-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-green-400">
-                        <i class="fas fa-award text-green-500 text-2xl"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold">Perfect Score</h3>
-                </div>
-                <div class="achievement-item text-center hover-scale cursor-pointer opacity-50">
-                    <div class="bg-gray-200 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-gray-400">
-                        <i class="fas fa-question text-gray-500 text-2xl"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold">Locked</h3>
-                </div>
-                <div class="achievement-item text-center hover-scale cursor-pointer opacity-50">
-                    <div class="bg-gray-200 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-gray-400">
-                        <i class="fas fa-question text-gray-500 text-2xl"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold">Locked</h3>
-                </div>
-                <div class="achievement-item text-center hover-scale cursor-pointer">
-                    <div class="bg-blue-100 rounded-full p-3 mx-auto w-16 h-16 flex items-center justify-center mb-2 border-2 border-blue-400">
-                        <i class="fas fa-calendar-check text-blue-500 text-2xl"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold">Streak 7 Days</h3>
-                </div>
+             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4" id="achievementsList">
+                <p class="text-gray-500 col-span-full">Loading achievements...</p>
             </div>
         </section>
 
-        <!-- Game History Section -->
-        <!-- <section class="past-games">
+        <section class="past-games">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 pb-2 border-b-2 border-green-300 pixel-font flex items-center">
                 <i class="fas fa-history mr-2 text-green-500"></i>QUEST LOG
             </h2>
-            <div id="pastGamesList" class="space-y-6">
-                <div class="game-item pixel-card bg-white p-5 md:p-6 hover-scale">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                        <div class="flex items-center">
-                            <img src="./images/retro image of a mushroom video game theme.png" alt="Quiz Type" class="w-8 h-8 mr-3">
-                            <h3 class="text-xl font-semibold text-green-700">General Knowledge Challenge</h3>
-                        </div>
-                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: May 01, 2025</p>
-                    </div>
-                    <div class="mb-4 flex items-center">
-                        <div class="mr-4">
-                            <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-green-600">8 / 10</span></p>
-                        </div>
-                        <div class="coin ml-2 w-5 h-5 inline-block"></div>
-                        <span class="ml-1 text-yellow-600 font-bold">+25</span>
-                        <div class="ml-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">+15 XP</span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
-                            <span>8 Correct</span>
-                        </div>
-                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
-                            <span>2 Incorrect</span>
-                        </div>
-                    </div>
-                    <button class="mt-4 text-sm bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded retro-button">
-                        View Details <i class="fas fa-arrow-right ml-1"></i>
-                    </button>
-                </div>
-
-                <div class="game-item pixel-card bg-white p-5 md:p-6 hover-scale">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                        <div class="flex items-center">
-                            <img src="./images/retro image of a mushroom video game theme.png" alt="Quiz Type" class="w-8 h-8 mr-3">
-                            <h3 class="text-xl font-semibold text-blue-700">Science Wonders</h3>
-                        </div>
-                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Played on: April 28, 2025</p>
-                    </div>
-                    <div class="mb-4 flex items-center">
-                        <div class="mr-4">
-                            <p class="text-lg text-gray-700">Final Score: <span class="font-bold text-orange-500">5 / 10</span></p>
-                        </div>
-                        <div class="coin ml-2 w-5 h-5 inline-block"></div>
-                        <span class="ml-1 text-yellow-600 font-bold">+15</span>
-                        <div class="ml-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">+8 XP</span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="result-detail bg-green-100 text-green-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-check-circle w-5 h-5 mr-3"></i>
-                            <span>5 Correct</span>
-                        </div>
-                        <div class="result-detail bg-red-100 text-red-700 p-3 rounded-lg flex items-center shadow-sm">
-                            <i class="fas fa-times-circle w-5 h-5 mr-3"></i>
-                            <span>5 Incorrect</span>
-                        </div>
-                    </div>
-                    <button class="mt-4 text-sm bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded retro-button">
-                        View Details <i class="fas fa-arrow-right ml-1"></i>
-                    </button>
-                </div>
-
-            </div>
-            <p id="noGamesMessage" class="text-gray-500 text-center py-10 hidden">
+             <div id="pastGamesList" class="space-y-6">
+                 </div>
+            <p id="noGamesMessage" class="text-gray-500 text-center py-10">
                 <i class="fas fa-ghost text-3xl mb-2"></i><br>
-                No quests completed yet. <br> Start playing to build your adventure log!
+                Loading quest log...
             </p>
-        </section> -->
+        </section>
     </main>
 
     <footer class="brick-bg text-center p-6 mt-10 text-sm text-white">
         <div class="container mx-auto">
             <p>© 2025 Quiz Whiz. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="https://x.com/" class="text-white hover:text-yellow-400 transition-colors">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://instagram.com" class="text-white hover:text-yellow-400 transition-colors">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://discord.com" class="text-white hover:text-yellow-400 transition-colors">
-                    <i class="fab fa-discord"></i>
-                </a>
             </div>
-        </div>
     </footer>
 
-    <!-- Hidden audio elements -->
-    <audio id="coinSound" preload="auto">
-        <source src="https://assets.codepen.io/21542/Mario-coin-sound.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="buttonSound" preload="auto">
-        <source src="https://assets.codepen.io/21542/Mario-jump-sound.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="successSound" preload="auto">
-        <source src="https://assets.codepen.io/21542/smw_1-up.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://assets.codepen.io/21542/sm64_file_select.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="coinSound" preload="auto" src="https://assets.codepen.io/21542/Mario-coin-sound.mp3"></audio>
+    <audio id="buttonSound" preload="auto" src="https://assets.codepen.io/21542/Mario-jump-sound.mp3"></audio>
+    <audio id="successSound" preload="auto" src="https://assets.codepen.io/21542/smw_1-up.mp3"></audio>
+    <audio id="bgMusic" loop preload="auto" src="https://assets.codepen.io/21542/sm64_file_select.mp3"></audio>
 
     <script src="./js/profilePage.js"></script>
 </body>

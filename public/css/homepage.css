@@ -23,7 +23,7 @@ body {
   animation: floatCloud linear infinite;
 }
 
-.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
+/*.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
 .cloud2 { top: 100px; left: -400px; animation-duration: 35s; }
 .cloud3 { top: 160px; left: -600px; animation-duration: 40s; }
 .cloud4 { top: 80px; left: -800px; animation-duration: 45s; }
@@ -33,6 +33,7 @@ body {
   0%   { transform: translateX(0); }
   100% { transform: translateX(140vw); }
 }
+*/
 
 /* UI: Hearts, Title, Button */
 /* .hearts img {
@@ -135,6 +136,127 @@ body {
             z-index: -1; /* Behind the card */
             overflow: hidden;
         }
+
+        @keyframes moveWater {
+          from {
+            background-position: 0 0;
+          }
+          to {
+            background-position: -100% 0;
+          }
+        }
+        
+
+        .water {
+          position: absolute;
+          bottom: 0;
+          height: 350px;
+          width: 100%;
+          background: url('/public/images/Water_SMB1.png');
+          background-size: auto;
+          image-rendering: pixelated;
+          z-index: -1;
+        
+          animation: moveWater 10s linear infinite;
+        }
+
+        .piranha {
+          position: absolute;
+          bottom: 0; 
+          left: 25%; 
+          transform: translateX(-50%);
+          height: 80px; 
+          image-rendering: pixelated;
+          animation: plantUpDown 3s ease-in-out infinite;
+          z-index: 0; 
+          animation-delay: 1s;
+        }
+        
+        @keyframes plantUpDown {
+          0%, 100% {
+            transform: translate(-50%, 0); /* Inside the water */
+          }
+          50% {
+            transform: translate(-50%, -60px); /* Rises out of the water */
+          }
+        }
+        
+        .blooper-container {
+          position: absolute;
+          bottom: 20px; 
+          right: 75%;
+          animation: moveSideways 6s ease-in-out infinite alternate;
+        }
+        
+        .blooper {
+          position:absolute;
+          bottom: 0;
+          right: 70%;
+          transform: translateX(-50%) scaleX(-1);
+          height: 120px;
+          image-rendering: pixelated;
+          animation: blooperUpDown 2s ease-in-out infinite;
+          z-index: 0;
+          animation-delay: 1s;
+        }
+
+        @keyframes moveSideways {
+          0%   { left: 10%; }
+          100% { left: 70%; }
+        }
+        
+        @keyframes blooperUpDown {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-50px); }
+        }
+        
+       
+        .fishbone{
+          position: absolute;
+          bottom: 0; 
+          right: 10%; 
+          transform: translateX(-50%);
+          height: 60px; 
+          image-rendering: pixelated;
+          animation: plantUpDown 3s ease-in-out infinite;
+          z-index: 0; 
+          animation-delay: 1s;
+        }
+
+        .cheep-container{
+          position: absolute;
+          bottom: 10% px; 
+          right: 20%;
+          animation: moveSideways 6s ease-in-out infinite alternate;
+        }
+
+        .cheep{
+          position: absolute;
+          bottom: 0;
+          right: 85%;
+          transform: translateX(-50%) scaleX(-1);
+          height: 50px;
+          image-rendering: pixelated;
+          animation: FishUpDown 2s ease-in-out infinite;
+          z-index: 0;
+          animation-delay: 1s;
+        }
+
+        @keyframes FishUpDown{
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-150px); }
+        }
+
+        .mario{
+          position:absolute;
+          bottom: 0;
+          animation: FishUpDown 2s ease-in-out infinite;
+          height: 50px;
+          image-rendering: pixelated;
+          animation-delay: 1s;
+          left: 5%;
+        }
+
         .intro-text { /* Style for the intro text */
              font-family: 'Press Start 2P', cursive;
              color: rgb(26, 2, 2); /* Adjust color for visibility */

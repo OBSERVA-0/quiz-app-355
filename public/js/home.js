@@ -1,3 +1,23 @@
+
+// In js/home.js or a common script for the top bar
+const logoutButton = document.querySelector('logoutButton'); // Or give it an ID
+if (logoutButton) {
+    logoutButton.textContent = '🚪 Log Out'; // Change text
+    logoutButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('/api/auth/logout', { method: 'POST' });
+            if (response.ok) {
+                window.location.href = '/homepage.html'; // Redirect to login
+            } else {
+                console.error('Logout failed');
+                // Optionally show an error message
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+    });
+}
 let countdownTime = 10 * 60 * 1000;  // 10 minutes in milliseconds
 let timerInterval;
 

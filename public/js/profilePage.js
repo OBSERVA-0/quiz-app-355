@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     // Sound elements
     const coinSound = document.getElementById('coinSound');
     const buttonSound = document.getElementById('buttonSound');

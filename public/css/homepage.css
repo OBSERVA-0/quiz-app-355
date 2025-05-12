@@ -23,7 +23,7 @@ body {
   animation: floatCloud linear infinite;
 }
 
-/*.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
+.cloud1 { top: 60px; left: -200px; animation-duration: 30s; }
 .cloud2 { top: 100px; left: -400px; animation-duration: 35s; }
 .cloud3 { top: 160px; left: -600px; animation-duration: 40s; }
 .cloud4 { top: 80px; left: -800px; animation-duration: 45s; }
@@ -33,7 +33,7 @@ body {
   0%   { transform: translateX(0); }
   100% { transform: translateX(140vw); }
 }
-*/
+
 
 /* UI: Hearts, Title, Button */
 /* .hearts img {

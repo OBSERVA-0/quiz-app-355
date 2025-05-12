@@ -14,7 +14,7 @@ body {
   width: 240px;
   height: 140px;
   /* background: url('/images/pixel-cloud.png') no-repeat center center; */
-  background: url('/public/images/pixel-cloud.png') no-repeat center center;
+  background: url('/images/pixel-cloud.png') no-repeat center center;
   background-size: contain;
   image-rendering: pixelated;
   position: absolute;

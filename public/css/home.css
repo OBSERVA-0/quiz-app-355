@@ -182,7 +182,7 @@ position: absolute;
   bottom: 0;
   width: 100%;
   height: 100px;
-  background: url('/public/images/dirt.jpg') repeat-x;
+  background: url('/images/dirt.jpg') repeat-x;
   background-size: contain;
   image-rendering: pixelated;
   display: flex;

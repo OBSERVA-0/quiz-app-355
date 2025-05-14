@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const quizResultSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,

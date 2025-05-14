@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
         if (!process.env.MONGODB_URI) {
-            console.error('FATAL ERROR: MONGODB_URI is not defined.');
+            console.error('FATAL ERROR: DATABASE connection failure.');
             process.exit(1);
         }
         const conn = await mongoose.connect(process.env.MONGODB_URI, {

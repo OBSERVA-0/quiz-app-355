@@ -1,69 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brain Blast Quiz - Welcome!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/SignUp.css">
-    <link rel="stylesheet" href="./css/homepage.css">
+  <meta charset="UTF-8">
+  <title>Quiz Whiz</title>
+  <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-    <div class="game-container">
-         <div class="sky">
+
+  <audio id="click-sound" src="./sound/coinSound.mp3" preload="auto"></audio>
+
+  <div class="top-bar">
+    <a href="leaderBoard.html" class="hud-button">🏆 Leaderboards</a>
+    <a href="ProfilePage.html" class="hud-button">👤 Profile</a>
+        <a href="index.html" id="logoutButton" class="hud-button">🚪 Log Out</a>
+  </div>
+  
+  <div class="game-container">
+
+    <!-- Sky with multiple pixel clouds -->
+    <div class="sky">
         <div class="pixel-cloud cloud1"></div>
         <div class="pixel-cloud cloud2"></div>
         <div class="pixel-cloud cloud3"></div>
         <div class="pixel-cloud cloud4"></div>
         <div class="pixel-cloud cloud5"></div>
-      </div>
+    </div>
 
-        <h1 class="login-title">Brain Blast Quiz</h1>
-        <h2 class="login-subtitle">Test your knowledge!</h2>
-        <p class="intro-text">
-            Log in or sign up to start your quiz quest!
-        </p>
-        <div class="wrapper">
-            <div class="card-switch">
-                <label class="switch">
-                    <input type="checkbox" class="toggle" />
-                    <span class="slider"></span>
-                    <span class="card-side"></span>
-                    <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                            <div class="title">Log in</div>
-                            <form id="login-form" class="flip-card__form" action="/api/auth/login" method="POST">
-                                <input class="flip-card__input" name="email" placeholder="Email" type="email" required />
-                                <input class="flip-card__input" name="password" placeholder="Password" type="password" required />
-                                <p class="message" id="login-message"></p> <button type="submit" class="flip-card__btn">Let’s go</button>
-                            </form>
-                        </div>
-                        <div class="flip-card__back">
-                            <div class="title">Sign up</div>
-                            <form id="signup-form" class="flip-card__form" action="/api/auth/signup" method="POST">
-                                <input class="flip-card__input" name="username" placeholder="Name" type="text" required />
-                                <input class="flip-card__input" name="email" placeholder="Email" type="email" required />
-                                <input class="flip-card__input" name="password" placeholder="Password" type="password" required minlength="6"/>
-                                <p class="message" id="signup-message"></p> <button type="submit" class="flip-card__btn">Confirm</button>
-                            </form>
-                        </div>
-                    </div>
-                </label>
-            </div>
-        </div>
+    <!-- Heart lives -->
+    <div class="hearts">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
+      <img src="./images/heart.png" alt="heart">
     </div>
-    <div class ="water">
-      <img class="water" src="./images/Water_SMB1.png" alt="water">
-      <img class="piranha" src="./images/piranhaplant.gif" alt="piranha">
-      <div class="blooper-container">
-        <img class="blooper" src="./images/blooper.png" alt="blooper"></div>
-      <div class="fishbone-container">
-        <img class="fishbone" src="./images/FishBoneNES.png" alt="fishbone"></div> 
-      <div class="cheep-container">
-        <img class="cheep" src="./images/cheep-cheep.png" alt="cheep"></div>
-      <img class="mario" src="./images/new-swimmingmario.gif" alt="mario">
+
+    <!-- Title and start button -->
+    <h1 class="title">Brain Blast Quiz</h1>
+    <h2 class="subtitle">Test your knowledge!</h2>
+    <a href="quiz.html">
+      <button class="start-button" id="start-btn">START</button>
+    </a>
+
+    <!-- Mario next to mountain -->
+    <img class="green-mountain" src="./images/green-mountain.png" alt="mountain">
+    <img class="mario" src="./images/mario.png" alt="mario">
+
+    <!-- Bush on top of everything -->
+    <div class="ground">
+      <img class="bush" src="./images/bush.png" alt="bush">
     </div>
-    <script src="./js/homepageAuth.js"></script>
+
+    <!-- Pole -->
+    <div class="pole">
+      <img class="pole" src="./images/pole.png" alt="pole">
+    </div>
+
+    <!-- Castle -->
+    <div>
+      <img class="castle" src="./images/castle.png" alt="castle">
+    </div>
+
+    <!-- Princess -->
+    <img class="princess" src="./images/princess-peach.png" alt="princess">
+
+    <!-- Pipe -->
+    <img class="pipe" src="./images/pipe.png" alt="pipe">
+
+    <!-- Bowser -->
+    <img class="bowser" src="./images/bowser.png" alt="bowser">
+
+    <!-- Timer -->
+    <div class="start-timer-btn" id="start-timer-btn" disabled>Timer</div>
+    <div id="timer-display" class="timer-display">10:00</div>
+
+  </div>
+
+  <script src="./js/home.js"></script>
 </body>
 </html>

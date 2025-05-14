@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
           try {
                const response = await fetch('/api/auth/logout', { method: 'POST' });
                if (response.ok) {
-                    window.location.href = '/homepage.html'; // Redirect to login
+                    window.location.href = '/index.html'; // Redirect to login
                } else {
                     const result = await response.json();
                     showToast(result.message || 'Logout failed.', 'error');

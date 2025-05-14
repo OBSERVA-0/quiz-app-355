@@ -63,7 +63,6 @@ async function fetchQuestions() {
         const response = await fetch('/api/questions?count=10'); // Fetch from your backend API
                                                             // You can adjust count or add other params here
                                                             // e.g., /api/questions?count=15&category=9
-
         if (!response.ok) {
             // If the API response is not OK (e.g., 401, 404, 500)
             let errorMsg = `Error loading questions. Status: ${response.status}`;

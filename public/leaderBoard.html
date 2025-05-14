@@ -16,48 +16,25 @@
     
     <!-- Leaderboard Table -->
     <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody id="leaderboard-body">
-          <!--<tr>
-            <td>1</td>
-            <td>Mario</td>
-            <td>10000</td>
-          </tr>
-          
-          <tr>
-            <td>2</td>
-            <td>Luigi</td>
-            <td>9000</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Princess Peach</td>
-            <td>8000</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Yoshi</td>
-            <td>7500</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Bowser</td>
-            <td>7000</td>
-          </tr>-->
-          <!-- More players can be added here -->
-        </tbody>
-      </table>
-    </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Level</th>
+                        <th>XP</th>
+                        </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="4" style="text-align:center; padding: 20px;">Loading leaderboard...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     
     <!-- Back to Home Button -->
-    <a href="index.html" class="button">Back to Home</a>
+    <a href="homePage.html" class="button">Back to Home</a>
     
     <!-- Mario, Luigi, and Yoshi Background -->
     <div class="characters">
@@ -93,59 +70,18 @@
       <img src="images/lakitu.png" class="lakitu">
   </div>
 
-  <script>
-    const lakitu = document.querySelector('.lakitu');
-    const screenWidth = window.innerWidth; // Get screen width to calculate left and right
-  
-    const leaderBoard = document.getElementById("leaderboard-body");
-    
-    (async function(){
-
-      const response = await fetch('/api/quizzes/leaderboard', {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          }
-      });
-
-      const result = await response.json(); // Always try to parse JSON response
-
-      if (response.ok) {
-          // Login successful!
-          
-          console.log('Leaderboard data:', result);
-
-          result.map( (player, index) => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                  <td>${index + 1}</td>
-                  <td>${player.username}</td>
-                  <td>${Math.floor(((Math.random() * 10)%10)+1+((result.length - index) * 5))*1000}</td>
-              `;
-              leaderBoard.appendChild(row);
-          });
-
-      } else {
-          // Login failed - display error message from backend
-          // loginMessage.textContent = result.message || 'Login failed. Please check your credentials.';
-          // loginMessage.classList.add('error');
-      }
-
-    })();
-
-    document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX; // Get mouse's X coordinate
-      
-      // If the cursor is on the left half of the screen, move the Lakitu to the left
-      if (mouseX < screenWidth / 2) {
-        lakitu.style.left = `${mouseX - 50}px`; // Move Lakitu to the left of the cursor
-      }
-      // If the cursor is on the right half of the screen, move the Lakitu to the right
-      else {
-        lakitu.style.left = `${mouseX + 50}px`; // Move Lakitu to the right of the cursor
-      }
-    });
-  </script>
+ <script>
+        const lakitu = document.querySelector('.lakitu');
+        if (lakitu) { // Check if lakitu element exists
+            const screenWidth = window.innerWidth;
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX;
+                // Simplified movement for example
+                lakitu.style.left = `${mouseX - (lakitu.width / 2)}px`;
+            });
+        }
+    </script>
+<script src="./js/leaderBoard.js" defer></script>
   
   
 </body>

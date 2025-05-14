@@ -58,9 +58,9 @@ body {
   text-align: center;
 }
 
-/* Background Clouds */
+/* Background Clouds */`
 .clouds {
-  background-image: url('images/clouds.png');
+  background-image: url('/images/clouds.png');
   background-repeat: repeat-x;
   position: absolute;
   top: 0;
@@ -185,12 +185,12 @@ h1.title {
   left: 0;
   display: flex;
   width: 100%;
-  height: 36px;
+  height: 36px;``
   z-index: 1;
 }
   
 .dirt {
-    background-image: url('images/dirt.png');
+    background-image: url('/images/dirt.png');
     background-size: cover; /* or try "contain" */
     background-repeat: no-repeat;
     width: 70px; /* fixed width */
@@ -218,3 +218,6 @@ h1.title {
 
   }
   
+  .lakitu.move-left {
+    left: 0; /* Move to the left */
+  }

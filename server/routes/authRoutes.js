@@ -5,9 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { protect } = require('../middleware/authMiddleware');
 
-// @desc    Register a new user
-// @route   POST /api/auth/signup
-// @access  Public
+
 router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -52,9 +50,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// @desc    Authenticate user & get token (Login)
-// @route   POST /api/auth/login
-// @access  Public
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -95,9 +91,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// @desc    Log user out
-// @route   POST /api/auth/logout
-// @access  Private (requires user to be logged in to log out)
+
 router.post('/logout', protect, (req, res) => {
     res.cookie('token', '', { // Clear the token cookie
         httpOnly: true,
@@ -109,9 +103,7 @@ router.post('/logout', protect, (req, res) => {
 });
 
 
-// @desc    Get current logged in user (for session check)
-// @route   GET /api/auth/me
-// @access  Private
+
 router.get('/me', protect, async (req, res) => {
     // req.user is attached by the 'protect' middleware
     if (req.user) {

@@ -8,7 +8,7 @@ if (logoutButton) {
         try {
             const response = await fetch('/api/auth/logout', { method: 'POST' });
             if (response.ok) {
-                window.location.href = '/homepage.html'; // Redirect to login
+                window.location.href = '/index.html'; // Redirect to login
             } else {
                 console.error('Logout failed');
                 // Optionally show an error message

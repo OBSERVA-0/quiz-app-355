@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginMessage.textContent = result.message || 'Login successful! Redirecting...';
                     loginMessage.classList.add('success');
                     // Redirect to the main page after a short delay
-                    window.location.href = '/index.html'; // Redirect to the main game page
+                    window.location.href = '/homePage.html'; // Redirect to the main game page
                     // Use just '/' if your server route '/' handles redirecting logged-in users
                 } else {
                     // Login failed - display error message from backend
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     signupMessage.textContent = result.message || 'Signup successful! Redirecting...';
                      signupMessage.classList.add('success');
                     // Redirect to the main page
-                     window.location.href = '/index.html';
+                     window.location.href = '/homePage.html';
                 } else {
                     // Signup failed - display error message from backend
                     signupMessage.textContent = result.message || 'Signup failed. Please check your details.';

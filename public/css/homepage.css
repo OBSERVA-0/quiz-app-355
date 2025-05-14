@@ -4,7 +4,7 @@
   /* put your macos specific rules here */
 
   .pixel-cloud {
-    background: url('/public/images/pixel-cloud.png') no-repeat center center !important;
+    background: url('/images/pixel-cloud.png') no-repeat center center !important;
   }
 
 }

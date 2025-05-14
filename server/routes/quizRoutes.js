@@ -4,9 +4,7 @@ const QuizResult = require('../models/QuizResult');
 const User = require('../models/User');
 const { protect } = require('../middleware/authMiddleware');
 
-// @desc    Submit quiz results
-// @route   POST /api/quizzes/submit
-// @access  Private
+
 router.post('/submit', protect, async (req, res) => {
     const { score, totalQuestions /*, questionsAttempted (if you add this later) */ } = req.body;
     const userId = req.user.id;
@@ -53,21 +51,12 @@ router.post('/submit', protect, async (req, res) => {
 });
 
 
-// @desc    Get leaderboard data
-// @route   GET /api/quizzes/leaderboard
-// @access  Private (or public, depending on your choice)
 router.get('/leaderboard', protect, async (req, res) => {
     try {
-        // Example: Get top 10 users by highest single quiz score percentage
-        // This is a simple way; a better leaderboard might use total XP or average score.
         const topScores = await QuizResult.find({})
             .sort({ percentage: -1, playedAt: 1 }) // Highest percentage, then oldest of those
             .limit(10)
             .populate('user', 'username profilePictureUrl'); // Populate user details
-
-        // To avoid showing multiple entries for the same user with high scores,
-        // you might need a more complex aggregation query to get each user's best score.
-        // For now, this shows top game instances.
 
         // A more user-centric leaderboard (e.g., by total XP):
         const topUsersByXP = await User.find({})

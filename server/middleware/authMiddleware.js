@@ -33,7 +33,7 @@ const protect = async (req, res, next) => {
 
     if (!token) {
         if (req.originalUrl.startsWith('/api')) {
-            return res.status(401).json({ message: 'Not authorized, no token' });
+            return res.status(401).json({ message: 'Not authorized, Please Log-In again' });
         }
         return res.redirect('/');
     }

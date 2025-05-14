@@ -107,5 +107,4 @@ router.post('/me/profile-picture', protect, upload.single('profilePic'), async (
         res.status(500).json({ message: 'Server error uploading picture.' });
     }
 });
-
 module.exports = router;

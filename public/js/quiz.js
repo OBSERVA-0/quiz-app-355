@@ -38,23 +38,95 @@ document.addEventListener('DOMContentLoaded', () => {
     quizContainer.insertBefore(feedbackElement, quizContainer.firstChild);
 });
 
+// async function fetchQuestions() {
+//     try {
+//         const response = await fetch('quiz-questions/questions.json');
+//         const allQuestions = await response.json();
+//         selectedQuestions = getRandomQuestions(allQuestions, 10);
+//         displayQuestion(0);
+//     } catch (error) {
+//         console.error('Error fetching questions:', error);
+//         questionElement.textContent = 'Error loading questions. Please try again.';
+//     }
+// }
+
+// function getRandomQuestions(questions, count) {
+//     const shuffled = [...questions].sort(() => 0.5 - Math.random());
+//     return shuffled.slice(0, count);
+// }
+// In public/js/quiz.js
+
 async function fetchQuestions() {
     try {
-        const response = await fetch('quiz-questions/questions.json');
-        const allQuestions = await response.json();
-        selectedQuestions = getRandomQuestions(allQuestions, 10);
+        console.log("Attempting to fetch questions from /api/questions..."); // For debugging
+        // ---> CHANGE THIS LINE <---
+        const response = await fetch('/api/questions?count=10'); // Fetch from your backend API
+                                                            // You can adjust count or add other params here
+                                                            // e.g., /api/questions?count=15&category=9
+
+        if (!response.ok) {
+            // If the API response is not OK (e.g., 401, 404, 500)
+            let errorMsg = `Error loading questions. Status: ${response.status}`;
+            try {
+                const errData = await response.json(); // Try to get error message from backend
+                errorMsg = errData.message || errorMsg;
+            } catch (e) { /* Ignore if error response isn't JSON */ }
+            throw new Error(errorMsg);
+        }
+
+        const questionsFromApi = await response.json();
+        console.log("Questions received from API:", questionsFromApi); // For debugging
+
+        if (!questionsFromApi || questionsFromApi.length === 0) {
+            throw new Error("No questions received from the API.");
+        }
+        
+        selectedQuestions = questionsFromApi; // API now returns the selected count and format
+        // No need for getRandomQuestions if the backend handles selection & formatting
+        // selectedQuestions = getRandomQuestions(questionsFromApi, 10); // Remove or adapt if backend doesn't randomize/count
+
         displayQuestion(0);
+
     } catch (error) {
         console.error('Error fetching questions:', error);
-        questionElement.textContent = 'Error loading questions. Please try again.';
+        if (questionElement) { // Check if element exists
+            questionElement.textContent = error.message || 'Error loading questions. Please try again.';
+        }
     }
 }
 
-function getRandomQuestions(questions, count) {
-    const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-}
+// function displayQuestion(index) {
+//     if (index >= selectedQuestions.length) {
+//         endQuiz();
+//         return;
+//     }
 
+//     answerSelected = false;
+//     const question = selectedQuestions[index];
+//     questionElement.textContent = question.question;
+
+//     optionButtons[0].textContent = `A. ${question.A}`;
+//     optionButtons[1].textContent = `B. ${question.B}`;
+//     optionButtons[2].textContent = `C. ${question.C}`;
+//     optionButtons[3].textContent = `D. ${question.D}`;
+
+//     optionButtons.forEach(button => {
+//         button.classList.remove('correct', 'incorrect', 'selected');
+//         button.disabled = false;
+//     });
+
+//     feedbackElement.textContent = '';
+//     feedbackElement.className = 'feedback';
+
+//     updateQuestionCounter(index);
+
+//     if (nextButton) {
+//         nextButton.style.display = 'none';
+//     }
+// }
+// In public/js/quiz.js
+
+// Modify your displayQuestion function:
 function displayQuestion(index) {
     if (index >= selectedQuestions.length) {
         endQuiz();
@@ -65,25 +137,32 @@ function displayQuestion(index) {
     const question = selectedQuestions[index];
     questionElement.textContent = question.question;
 
-    optionButtons[0].textContent = `A. ${question.A}`;
-    optionButtons[1].textContent = `B. ${question.B}`;
-    optionButtons[2].textContent = `C. ${question.C}`;
-    optionButtons[3].textContent = `D. ${question.D}`;
+    // Option buttons (assuming they are in an array/NodeList called optionButtons)
+    const optionsData = [question.A, question.B, question.C, question.D];
 
-    optionButtons.forEach(button => {
+    optionButtons.forEach((button, i) => {
         button.classList.remove('correct', 'incorrect', 'selected');
         button.disabled = false;
+
+        if (optionsData[i]) { // If option data exists for this button
+            button.textContent = `${String.fromCharCode(65 + i)}. ${optionsData[i]}`;
+            button.style.display = 'block'; // Show the button
+        } else {
+            button.style.display = 'none'; // Hide button if no option (e.g., for C & D in boolean)
+            button.textContent = '';
+        }
     });
 
     feedbackElement.textContent = '';
     feedbackElement.className = 'feedback';
-
     updateQuestionCounter(index);
 
     if (nextButton) {
         nextButton.style.display = 'none';
     }
 }
+
+// ... rest of your quiz.js ...
 
 function updateQuestionCounter(index) {
     let counterElement = document.querySelector('.question-counter');

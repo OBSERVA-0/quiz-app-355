@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     // --- DOM Element Selection ---
     // Sound elements (Keep if used)
     const coinSound = document.getElementById('coinSound');
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const formData = new FormData();
                 formData.append('profilePic', file); // Key matches multer setup
-
+                
                 try {
                     showToast('Uploading picture...', 'info'); // Feedback
                     // ---> ENFORCEMENT POINT 2 (Saving Profile Pic) <---
@@ -356,9 +356,23 @@ document.addEventListener('DOMContentLoaded', function() {
             coinCount.textContent = userData.coins || 0;
             joinedDate.textContent = userData.joinedDate ? `Joined: ${new Date(userData.joinedDate).toLocaleDateString()}` : 'Joined: N/A';
 
+            let totalAverageScore = 0;
+            // defines the total average score
+
+            for (const quiz of userData.pastGames) {
+                // loops through previous played quizzes
+
+                totalAverageScore += quiz.percentage; 
+                // adds to average score
+
+            }
+
             // Populate stats (using optional chaining ?. for safety)
             statQuizzesPlayed.textContent = userData.stats?.quizzesPlayed || 0;
             // Calculate average score if not stored directly
+
+            userData.stats.averageScore = userData.pastGames.length > 0 ? (totalAverageScore / userData.pastGames.length).toFixed(2) : 0;
+
             statAverageScore.textContent = `${userData.stats?.averageScore || 0}%`; // Assuming averageScore is stored
             statAchievements.textContent = userData.achievements?.length || 0;
 
@@ -401,7 +415,6 @@ document.addEventListener('DOMContentLoaded', function() {
      // Add logout functionality to nav buttons
      const navLogoutButton = document.getElementById('navLogoutButton');
      const mobileLogoutButton = document.getElementById('mobileLogoutButton');
-
      const handleLogout = async (e) => {
           e.preventDefault();
           console.log("Logout clicked");

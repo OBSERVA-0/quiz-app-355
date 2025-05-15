@@ -100,7 +100,8 @@ body {
 }
 
 .mario{
-  bottom: 10%;
+  
+  bottom: 85px;
   position: absolute;
   animation: linear infinite;
   animation-name: run;

@@ -179,6 +179,23 @@ h1.title {
   z-index: 1;
 }
   
+.dirt {
+   background: url('/images/dirt.jpg') repeat-x;
+    background-size: cover; /* or try "contain" */
+    background-repeat: no-repeat;
+    width: 70px; /* fixed width */
+    height: 36px;
+    image-rendering: pixelated;
+    flex: 1; /* Makes each image evenly divide the container */
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    image-rendering: pixelated;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  
   .lakitu {
     position: absolute;
     top: 10px; /* Position at the top of the screen */

@@ -36,3 +36,10 @@ Brain Blast Quiz App is a dynamic web application designed to test and enhance y
     * Option to start a new quiz, allowing for continuous engagement.
     * Offers realtime feedback and motivational message for user based on score.
     *Confetti celebration added as well despite low score for congratulations for doing the quiz
+
+**Additional features(3rd Project):**
+    *LogIn and SignUp page will user authentication in MongoDb Atlas**
+    *Profile Page for users to see play history and past scores on quizes
+        Also has the average quiz grade across all quizes and number of quizes played**
+    *Global Leaderboard rank based on Level and total points earned per quiz limited to top 10 users*
+    **Achievements Page to award users for constant progress and improvements

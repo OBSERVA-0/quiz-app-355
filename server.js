@@ -1,5 +1,3 @@
-console.log('<<<<< SERVER.JS IS RUNNING - VERSION 1>>>>>');
-
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -41,16 +39,6 @@ app.use('/api/users', userRoutes);       // Will be protected internally or by s
 app.use('/api/questions', questionRoutes); // Will be protected
 app.use('/api/quizzes', quizRoutes);     // Will be protected
 
-// Serve HTML files - Login/Signup is the entry if not authenticated
-// app.get('/', (req, res) => {
-//     // If user is authenticated (e.g., has a valid token cookie), redirect to index.html
-//     // Otherwise, serve homepage.html (login/signup)
-//     // This basic check can be enhanced
-//     if (req.cookies.token) { // Simple check, robust check would involve verifying token
-//         return res.sendFile(path.join(__dirname, 'public', 'index.html'));
-//     }
-//     res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
-// });
 app.get('/', (req, res) => {
     console.log('--- ROOT PATH (/) REQUEST RECEIVED ---'); // Add this
     console.log('Cookies on this request:', JSON.stringify(req.cookies, null, 2)); // Add this
